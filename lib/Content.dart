@@ -1,17 +1,19 @@
-import 'package:bovcria/Info.dart';
-import 'package:bovcria/Metas.dart';
-import 'package:bovcria/Taxas.dart';
-import 'package:bovcria/dicas.dart';
-import 'package:bovcria/voce_sabia.dart';
+import 'package:bovcria/dicas2.dart';
 import 'package:flutter/material.dart';
+import 'Info.dart';
+import 'Metas.dart';
+import 'Taxas.dart';
+import 'dicas.dart';
+import 'voce_sabia.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 import 'TabelasMetas.dart';
 
 class Content extends StatelessWidget {
   double largura = 0;
 
+  @override
   Widget build(BuildContext context) {
     //Ajuste da largura dos botões
     if (MediaQuery.of(context).size.width <= 320) {
@@ -21,6 +23,17 @@ class Content extends StatelessWidget {
     } else {
       largura = 300;
     }
+
+    // Define o estilo de botão para usar em todos os TextButtons
+    final ButtonStyle textButtonStyle = TextButton.styleFrom(
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.lightGreen,
+      disabledForegroundColor: Colors.grey,
+      padding: EdgeInsets.all(15.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+    );
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -41,8 +54,8 @@ class Content extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).helloWorld,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.helloWorld,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
 
                             //Taxas
@@ -54,13 +67,8 @@ class Content extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: textButtonStyle,
                                         onPressed: () {
                                           Navigator.push(
                                               context,
@@ -68,23 +76,20 @@ class Content extends StatelessWidget {
                                                   builder: (context) =>
                                                       Taxas()));
                                         },
-                                        child: Container(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(
-                                                MdiIcons.chartBar,
-                                                size: 28,
-                                              ),
-                                              Text(
-                                                AppLocalizations.of(context)
-                                                    .rate,
-                                                style:
-                                                    TextStyle(fontSize: 22.0),
-                                              )
-                                            ],
-                                          ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(
+                                              MdiIcons.chartBar,
+                                              size: 28,
+                                              color: Colors.white, // Mantém a cor do ícone
+                                            ),
+                                            Text(
+                                              AppLocalizations.of(context)!.rate,
+                                              style: TextStyle(fontSize: 22.0),
+                                            )
+                                          ],
                                         )),
                                   )
                                 ],
@@ -100,13 +105,8 @@ class Content extends StatelessWidget {
                                     SizedBox(
                                       height: 90,
                                       width: largura,
-                                      child: FlatButton(
-                                          color: Colors.lightGreen,
-                                          textColor: Colors.white,
-                                          disabledColor: Colors.grey,
-                                          disabledTextColor: Colors.black,
-                                          padding: EdgeInsets.all(15.0),
-                                          splashColor: Colors.lightGreenAccent,
+                                      child: TextButton(
+                                          style: textButtonStyle,
                                           onPressed: () {
                                             Navigator.push(
                                                 context,
@@ -114,23 +114,20 @@ class Content extends StatelessWidget {
                                                     builder: (context) =>
                                                         Metas()));
                                           },
-                                          child: Container(
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Icon(
-                                                  Icons.assignment_turned_in,
-                                                  size: 28,
-                                                ),
-                                                Text(
-                                                  AppLocalizations.of(context)
-                                                      .goals,
-                                                  style:
-                                                      TextStyle(fontSize: 22.0),
-                                                )
-                                              ],
-                                            ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.assignment_turned_in,
+                                                size: 28,
+                                                color: Colors.white, // Mantém a cor do ícone
+                                              ),
+                                              Text(
+                                                AppLocalizations.of(context)!.goals,
+                                                style: TextStyle(fontSize: 22.0),
+                                              )
+                                            ],
                                           )),
                                     )
                                   ]),
@@ -145,37 +142,29 @@ class Content extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: textButtonStyle,
                                         onPressed: () {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      Dicas()));
+                                                      Dicas2()));
                                         },
-                                        child: Container(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(
-                                                MdiIcons.lightbulbOn,
-                                                size: 28,
-                                              ),
-                                              Text(
-                                                AppLocalizations.of(context)
-                                                    .tips,
-                                                style:
-                                                    TextStyle(fontSize: 22.0),
-                                              )
-                                            ],
-                                          ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(
+                                              MdiIcons.lightbulbOn,
+                                              size: 28,
+                                              color: Colors.white, // Mantém a cor do ícone
+                                            ),
+                                            Text(
+                                              AppLocalizations.of(context)!.tips,
+                                              style: TextStyle(fontSize: 22.0),
+                                            )
+                                          ],
                                         )),
                                   )
                                 ],
@@ -191,13 +180,8 @@ class Content extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: textButtonStyle,
                                         onPressed: () {
                                           Navigator.push(
                                               context,
@@ -205,23 +189,20 @@ class Content extends StatelessWidget {
                                                   builder: (context) =>
                                                       VoceSabia()));
                                         },
-                                        child: Container(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.question_answer,
-                                                size: 28,
-                                              ),
-                                              Text(
-                                                AppLocalizations.of(context)
-                                                    .did,
-                                                style:
-                                                    TextStyle(fontSize: 22.0),
-                                              )
-                                            ],
-                                          ),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.question_answer,
+                                              size: 28,
+                                              color: Colors.white, // Mantém a cor do ícone
+                                            ),
+                                            Text(
+                                              AppLocalizations.of(context)!.did,
+                                              style: TextStyle(fontSize: 22.0),
+                                            )
+                                          ],
                                         )),
                                   )
                                 ],

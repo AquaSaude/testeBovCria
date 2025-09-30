@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
+import 'package:url_launcher/url_launcher.dart'; // Importação atualizada
 import 'info2.dart';
-import 'package:share/share.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class Info extends StatelessWidget {
-  double largura;
+  late double largura;
 
   Widget build(BuildContext context) {
     //Ajuste da largura dos botões
@@ -36,8 +36,8 @@ class Info extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).info,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.info,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
 
                             //equipe
@@ -49,35 +49,49 @@ class Info extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.grey;
+                                              }
+                                              return Colors.lightGreen;
+                                            },
+                                          ),
+                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.black;
+                                              }
+                                              return Colors.white;
+                                            },
+                                          ),
+                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                        ),
                                         onPressed: () {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) => Info2(
-                                                        index: 1,
-                                                      )));
+                                                    index: 1,
+                                                  )));
                                         },
                                         child: Container(
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(
                                                 Icons.people,
                                                 size: 28,
                                               ),
                                               Text(
-                                                AppLocalizations.of(context)
+                                                AppLocalizations.of(context)!
                                                     .time,
                                                 style:
-                                                    TextStyle(fontSize: 22.0),
+                                                TextStyle(fontSize: 22.0),
                                               )
                                             ],
                                           ),
@@ -96,35 +110,49 @@ class Info extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.grey;
+                                              }
+                                              return Colors.lightGreen;
+                                            },
+                                          ),
+                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.black;
+                                              }
+                                              return Colors.white;
+                                            },
+                                          ),
+                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                        ),
                                         onPressed: () {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) => Info2(
-                                                        index: 2,
-                                                      )));
+                                                    index: 2,
+                                                  )));
                                         },
                                         child: Container(
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(
                                                 Icons.book,
                                                 size: 28,
                                               ),
                                               Text(
-                                                AppLocalizations.of(context)
+                                                AppLocalizations.of(context)!
                                                     .bibliografia,
                                                 style:
-                                                    TextStyle(fontSize: 22.0),
+                                                TextStyle(fontSize: 22.0),
                                               )
                                             ],
                                           ),
@@ -143,35 +171,54 @@ class Info extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
-                                        onPressed: () {
-                                          final Email email = Email(
-                                            subject: 'BovCria',
-                                            recipients: ['tecbovapp@gmail.com'],
-                                            isHTML: false,
+                                    child: TextButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.grey;
+                                              }
+                                              return Colors.lightGreen;
+                                            },
+                                          ),
+                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.black;
+                                              }
+                                              return Colors.white;
+                                            },
+                                          ),
+                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                        ),
+                                        onPressed: () async { // Adicionado 'async'
+                                          final Uri emailLaunchUri = Uri(
+                                            scheme: 'mailto',
+                                            path: 'tecbovapp@gmail.com',
+                                            query: encodeQueryParameters(<String, String>{
+                                              'subject': 'BovCria',
+                                            }),
                                           );
-                                          FlutterEmailSender.send(email);
+
+                                          if (!await launchUrl(emailLaunchUri)) {
+                                            throw Exception('Não foi possível abrir o aplicativo de e-mail.');
+                                          }
                                         },
                                         child: Container(
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(
                                                 Icons.email,
                                                 size: 28,
                                               ),
                                               Text(
-                                                AppLocalizations.of(context)
+                                                AppLocalizations.of(context)!
                                                     .contato,
                                                 style:
-                                                    TextStyle(fontSize: 22.0),
+                                                TextStyle(fontSize: 22.0),
                                               )
                                             ],
                                           ),
@@ -190,32 +237,46 @@ class Info extends StatelessWidget {
                                   SizedBox(
                                     height: 90,
                                     width: largura,
-                                    child: FlatButton(
-                                        color: Colors.lightGreen,
-                                        textColor: Colors.white,
-                                        disabledColor: Colors.grey,
-                                        disabledTextColor: Colors.black,
-                                        padding: EdgeInsets.all(15.0),
-                                        splashColor: Colors.lightGreenAccent,
+                                    child: TextButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.grey;
+                                              }
+                                              return Colors.lightGreen;
+                                            },
+                                          ),
+                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
+                                                (Set<MaterialState> states) {
+                                              if (states.contains(MaterialState.disabled)) {
+                                                return Colors.black;
+                                              }
+                                              return Colors.white;
+                                            },
+                                          ),
+                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                        ),
                                         onPressed: () {
                                           Share.share(
-                                              AppLocalizations.of(context)
+                                              AppLocalizations.of(context)!
                                                   .share);
                                         },
                                         child: Container(
                                           child: Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(
                                                 Icons.share,
                                                 size: 28,
                                               ),
                                               Text(
-                                                AppLocalizations.of(context)
+                                                AppLocalizations.of(context)!
                                                     .share2,
                                                 style:
-                                                    TextStyle(fontSize: 22.0),
+                                                TextStyle(fontSize: 22.0),
                                               )
                                             ],
                                           ),
@@ -237,4 +298,11 @@ class Info extends StatelessWidget {
       ),
     );
   }
+}
+
+// Função auxiliar para codificar parâmetros de URL
+String? encodeQueryParameters(Map<String, String> params) {
+  return params.entries
+      .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+      .join('&');
 }

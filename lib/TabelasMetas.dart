@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class TabelasMetas extends StatelessWidget {
   TabelasMetas({this.index});
 
   final index;
 
-  Card tabela(index, context) {
+  Card? tabela(index, context) {
     if (index == 1) {
       return Card(
           color: Colors.white,
@@ -17,8 +17,8 @@ class TabelasMetas extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      AppLocalizations.of(context).tabelasmetas1,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      AppLocalizations.of(context)!.tabelasmetas1,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Table(
                       defaultVerticalAlignment:
@@ -32,9 +32,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).categoriataxas,
+                                    AppLocalizations.of(context)!.categoriataxas,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -47,9 +47,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).novilhameses,
+                                    AppLocalizations.of(context)!.novilhameses,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -62,9 +62,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).novilhameses1,
+                                    AppLocalizations.of(context)!.novilhameses1,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -78,9 +78,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).vacamaior,
+                                    AppLocalizations.of(context)!.vacamaior,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -95,9 +95,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).taxaconcept,
+                                    AppLocalizations.of(context)!.taxaconcept,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -142,9 +142,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).taxaParto,
+                                    AppLocalizations.of(context)!.taxaParto,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -189,9 +189,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).taxaDesmame,
+                                    AppLocalizations.of(context)!.taxaDesmame,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -236,10 +236,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .relacaoVacaBezerro,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -289,8 +289,8 @@ class TabelasMetas extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      AppLocalizations.of(context).indicesGeraisRebanho,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      AppLocalizations.of(context)!.indicesGeraisRebanho,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Table(
                       defaultVerticalAlignment:
@@ -304,9 +304,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).caractTaxas,
+                                    AppLocalizations.of(context)!.caractTaxas,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -321,7 +321,7 @@ class TabelasMetas extends StatelessWidget {
                                   child: Text(
                                     "Ideal",
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -334,9 +334,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).satisfatorio,
+                                    AppLocalizations.of(context)!.satisfatorio,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -350,9 +350,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).alerta,
+                                    AppLocalizations.of(context)!.alerta,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -367,10 +367,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .idadePrimeiroParto,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -383,7 +383,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .vinteQuatroMeses,
                                     textAlign: TextAlign.center,
                                   ),
@@ -397,7 +397,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .vinteCincoTrintaSeis,
                                     textAlign: TextAlign.center,
                                   ),
@@ -411,7 +411,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .acimaDeTrintaSeis,
                                     textAlign: TextAlign.center,
                                   ),
@@ -427,9 +427,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).intervalo,
+                                    AppLocalizations.of(context)!.intervalo,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -442,7 +442,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .trezentosSessentaCincoDias,
                                     textAlign: TextAlign.center,
                                   ),
@@ -456,7 +456,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .trezentosSessCincoTrezNovCinco,
                                     textAlign: TextAlign.center,
                                   ),
@@ -470,7 +470,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .acimaTrezSessCinco,
                                     textAlign: TextAlign.center,
                                   ),
@@ -486,10 +486,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .taxaAnualMortGeral,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -515,7 +515,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).ateOito,
+                                    AppLocalizations.of(context)!.ateOito,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -528,7 +528,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).acimaOito,
+                                    AppLocalizations.of(context)!.acimaOito,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -543,10 +543,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .taxaAnualMorteBezerros,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -585,7 +585,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).acimaDois,
+                                    AppLocalizations.of(context)!.acimaDois,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -600,9 +600,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).distocias,
+                                    AppLocalizations.of(context)!.distocias,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -641,7 +641,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).acimaCinco,
+                                    AppLocalizations.of(context)!.acimaCinco,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -661,8 +661,8 @@ class TabelasMetas extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      AppLocalizations.of(context).tabela3,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      AppLocalizations.of(context)!.tabela3,
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Table(
                       columnWidths: {0: FractionColumnWidth(.27)},
@@ -677,9 +677,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).caractReprod,
+                                    AppLocalizations.of(context)!.caractReprod,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -698,7 +698,7 @@ class TabelasMetas extends StatelessWidget {
                                       child: Text(
                                     "USA",
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -711,14 +711,14 @@ class TabelasMetas extends StatelessWidget {
                                       child: Text(
                                     "Amplitude",
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   )),
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context).alvoIndustrial,
+                                    AppLocalizations.of(context)!.alvoIndustrial,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -735,9 +735,9 @@ class TabelasMetas extends StatelessWidget {
                                 children: <Widget>[
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context).br,
+                                    AppLocalizations.of(context)!.br,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -750,14 +750,14 @@ class TabelasMetas extends StatelessWidget {
                                       child: Text(
                                     "Amplitude",
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   )),
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context).alvoIndustrial,
+                                    AppLocalizations.of(context)!.alvoIndustrial,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -772,9 +772,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).novilhasIdade,
+                                    AppLocalizations.of(context)!.novilhasIdade,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -791,7 +791,7 @@ class TabelasMetas extends StatelessWidget {
                                 children: <Widget>[
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context).mediaQuatorze,
+                                    AppLocalizations.of(context)!.mediaQuatorze,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -808,7 +808,7 @@ class TabelasMetas extends StatelessWidget {
                                 children: <Widget>[
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context).mediaDezoito,
+                                    AppLocalizations.of(context)!.mediaDezoito,
                                     textAlign: TextAlign.center,
                                   ))
                                 ],
@@ -823,9 +823,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).idadePub,
+                                    AppLocalizations.of(context)!.idadePub,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -886,9 +886,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).pesoPub,
+                                    AppLocalizations.of(context)!.pesoPub,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -949,10 +949,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .escoreTratoRepro,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1013,10 +1013,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .machosPeriodoEsc,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1077,10 +1077,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .pesoNascBezerro,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1141,9 +1141,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).filhosVacas,
+                                    AppLocalizations.of(context)!.filhosVacas,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1204,10 +1204,10 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)
+                                    AppLocalizations.of(context)!
                                         .bezerroNovilhas,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1268,9 +1268,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).condCorpParto,
+                                    AppLocalizations.of(context)!.condCorpParto,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1331,9 +1331,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).intPosParto,
+                                    AppLocalizations.of(context)!.intPosParto,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1394,9 +1394,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).duracaoEstacao,
+                                    AppLocalizations.of(context)!.duracaoEstacao,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1457,9 +1457,9 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context).longVaca,
+                                    AppLocalizations.of(context)!.longVaca,
                                     style:
-                                        Theme.of(context).textTheme.subtitle1,
+                                        Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -1531,7 +1531,7 @@ class TabelasMetas extends StatelessWidget {
               padding: EdgeInsets.all(5),
               child: Center(
                 child: Column(
-                  children: <Widget>[
+                  children:[
                     Card(
                       color: Colors.white,
                       child: Container(
@@ -1540,12 +1540,15 @@ class TabelasMetas extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).metasRebanho,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.metasRebanho,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
-                            tabela(this.index, context),
-                            FlatButton(
-                              color: Colors.lightGreen,
+                            tabela(this.index, context)!,
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context, true);
                               },
@@ -1555,12 +1558,13 @@ class TabelasMetas extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context).voltar),
+                                      Text(AppLocalizations.of(context)!.voltar),
                                     ],
                                   )
                                 ],
                               ),
-                            ),
+                            )
+
                           ],
                         ),
                       ),

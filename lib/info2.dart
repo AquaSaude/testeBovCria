@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
+import 'package:bovcria/TabelasMetas.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+// A importação de 'flutter_email_sender' foi removida, pois não é mais utilizada aqui.
 
 class Info2 extends StatelessWidget {
-  Info2({this.index});
+  final int index;
 
-  final index;
+  Info2({Key? key, required this.index}) : super(key: key);
 
-  Column informacoes(indice, BuildContext context) {
+  Widget _informacoes(int indice, BuildContext context) {
     if (indice == 1) {
       var dev = [
         "Eduarda Soares Serpa Camboim (UFCSPA)",
@@ -27,7 +30,7 @@ class Info2 extends StatelessWidget {
         "Dra. Lissandra Souto Cavalli (DDPA|SEAPDR)"
       ];
 
-      List<Row> listaCordenadora = new List<Row>();
+      List<Row> listaCordenadora = [];
       for (var i = 0; i < coordenadora.length; i++) {
         listaCordenadora.add(Row(
           children: <Widget>[
@@ -42,7 +45,7 @@ class Info2 extends StatelessWidget {
         ));
       }
 
-      List<Row> listaDev = new List<Row>();
+      List<Row> listaDev = [];
       for (var i = 0; i < dev.length; i++) {
         listaDev.add(Row(
           children: <Widget>[
@@ -57,7 +60,7 @@ class Info2 extends StatelessWidget {
         ));
       }
 
-      List<Row> listaEquipe = new List<Row>();
+      List<Row> listaEquipe = [];
       for (var i = 0; i < equipe.length; i++) {
         listaEquipe.add(Row(
           children: <Widget>[
@@ -92,8 +95,8 @@ class Info2 extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(5),
                               child: Text(
-                                  AppLocalizations.of(context).coordenacao,
-                                  style: Theme.of(context).textTheme.headline6),
+                                  AppLocalizations.of(context)!.coordenacao,
+                                  style: Theme.of(context).textTheme.titleLarge),
                             )
                           ],
                         ),
@@ -115,8 +118,8 @@ class Info2 extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(5),
                               child: Text(
-                                  AppLocalizations.of(context).desenvolvimento,
-                                  style: Theme.of(context).textTheme.headline6),
+                                  AppLocalizations.of(context)!.desenvolvimento,
+                                  style: Theme.of(context).textTheme.titleLarge),
                             )
                           ],
                         ),
@@ -137,8 +140,8 @@ class Info2 extends StatelessWidget {
                           children: <Widget>[
                             Padding(
                               padding: EdgeInsets.all(5),
-                              child: Text(AppLocalizations.of(context).time,
-                                  style: Theme.of(context).textTheme.headline6),
+                              child: Text(AppLocalizations.of(context)!.time,
+                                  style: Theme.of(context).textTheme.titleLarge),
                             )
                           ],
                         ),
@@ -162,16 +165,16 @@ class Info2 extends StatelessWidget {
         "Fonte: Greenwood, Clayton, and Bell. doi:10.2527/af.2017-0127",
       ];
 
-      List<Row> listaBibliografia = new List<Row>();
+      List<Row> listaBibliografia = [];
       for (var i = 0; i < bibliografia.length; i++) {
         listaBibliografia.add(Row(
           children: <Widget>[
             Icon(Icons.book),
             Expanded(
                 child: Padding(
-              padding: EdgeInsets.all(6),
-              child: Text(bibliografia[i]),
-            ))
+                  padding: EdgeInsets.all(6),
+                  child: Text(bibliografia[i]),
+                ))
           ],
         ));
       }
@@ -190,8 +193,8 @@ class Info2 extends StatelessWidget {
                     children: <Widget>[
                       Padding(
                         padding: EdgeInsets.all(5),
-                        child: Text(AppLocalizations.of(context).bibliografia,
-                            style: Theme.of(context).textTheme.headline6),
+                        child: Text(AppLocalizations.of(context)!.bibliografia,
+                            style: Theme.of(context).textTheme.titleLarge),
                       )
                     ],
                   ),
@@ -208,12 +211,17 @@ class Info2 extends StatelessWidget {
         ],
       );
     }
+    return Container();
   }
 
   @override
   Widget build(BuildContext context) {
     //Variaveis
     var title = 'BovCria';
+
+    // Variavel 'largura' não está definida no código do usuário.
+    // Para evitar erros, vou atribuir um valor padrão.
+    var largura = MediaQuery.of(context).size.width;
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -240,13 +248,16 @@ class Info2 extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
-                            informacoes(index, context),
+                            _informacoes(index, context),
                             //Back Button
                             Padding(
                               padding: EdgeInsets.all(5),
-                              child: FlatButton(
-                                shape: StadiumBorder(),
-                                color: Colors.lightGreen,
+                              child: TextButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(StadiumBorder()),
+                                  backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                ),
                                 onPressed: () {
                                   Navigator.pop(context, true);
                                 },
@@ -254,11 +265,10 @@ class Info2 extends StatelessWidget {
                                   children: <Widget>[
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: <Widget>[
                                         Icon(Icons.arrow_back),
-                                        Text(AppLocalizations.of(context)
-                                            .voltar),
+                                        Text(AppLocalizations.of(context)!.voltar),
                                       ],
                                     )
                                   ],

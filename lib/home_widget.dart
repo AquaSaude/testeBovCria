@@ -2,7 +2,7 @@ import 'package:bovcria/Content.dart';
 import 'package:bovcria/Info.dart';
 import 'package:bovcria/Start.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -38,13 +38,13 @@ class _HomeState extends State<Home> {
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text(AppLocalizations.of(context).inicio),
+            label: (AppLocalizations.of(context)!.inicio),
           ),
           new BottomNavigationBarItem(
               icon: Icon(Icons.apps),
-              title: Text(AppLocalizations.of(context).helloWorld)),
+              label: (AppLocalizations.of(context)!.helloWorld)),
           new BottomNavigationBarItem(
-              icon: Icon(Icons.info), title: Text('Info')),
+              icon: Icon(Icons.info), label: ('Info')),
         ],
       ),
     );

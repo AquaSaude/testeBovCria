@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class VoceSabia extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class VoceSabia extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).vocesabia,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.vocesabia,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Card(
                               color: Colors.white,
@@ -34,21 +34,24 @@ class VoceSabia extends StatelessWidget {
                                       MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Text(
-                                      (AppLocalizations.of(context).fatores),
+                                      (AppLocalizations.of(context)!.fatores),
                                       textAlign: TextAlign.justify,
                                     ),
                                     Text(
-                                      AppLocalizations.of(context)
+                                      AppLocalizations.of(context)!
                                           .fontesVocesabia,
                                       style:
-                                          Theme.of(context).textTheme.caption,
+                                          Theme.of(context).textTheme.bodySmall,
                                     )
                                   ],
                                 ),
                               ),
                             ),
-                            FlatButton(
-                              color: Colors.lightGreen,
+                            TextButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context, true);
                               },
@@ -58,7 +61,7 @@ class VoceSabia extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context).voltar),
+                                      Text(AppLocalizations.of(context)!.voltar),
                                     ],
                                   )
                                 ],

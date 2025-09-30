@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import 'TabelasMetas.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class Metas extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -25,8 +24,8 @@ class Metas extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).metas,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.metas,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Card(
                               color: Colors.white,
@@ -34,36 +33,19 @@ class Metas extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
                                 child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     Text(
-                                        AppLocalizations.of(context)
-                                            .metasgerais,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1),
-                                    Text(AppLocalizations.of(context)
-                                        .interpartos),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Card(
-                              color: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    Text(
-                                      AppLocalizations.of(context)
+                                      AppLocalizations.of(context)!
                                           .metasespecificas,
                                       style:
-                                          Theme.of(context).textTheme.headline6,
+                                      Theme.of(context).textTheme.titleLarge,
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -75,12 +57,12 @@ class Metas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.spaceAround,
                                             children: <Widget>[
                                               Icon(MdiIcons.tableLarge),
                                               Flexible(
                                                 child: Text(
-                                                  AppLocalizations.of(context)
+                                                  AppLocalizations.of(context)!
                                                       .metasIndicesRepro,
                                                   textAlign: TextAlign.center,
                                                 ),
@@ -90,8 +72,11 @@ class Metas extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -103,12 +88,12 @@ class Metas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.spaceAround,
                                             children: <Widget>[
                                               Icon(MdiIcons.tableLarge),
                                               Flexible(
                                                 child: Text(
-                                                  AppLocalizations.of(context)
+                                                  AppLocalizations.of(context)!
                                                       .indicesGeraisRebCria,
                                                   textAlign: TextAlign.center,
                                                 ),
@@ -118,8 +103,11 @@ class Metas extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -131,12 +119,12 @@ class Metas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                             children: <Widget>[
                                               Icon(MdiIcons.tableLarge),
                                               Flexible(
                                                 child: Text(
-                                                  AppLocalizations.of(context)
+                                                  AppLocalizations.of(context)!
                                                       .especifProdBovCorte,
                                                   textAlign: TextAlign.center,
                                                 ),
@@ -150,8 +138,12 @@ class Metas extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            FlatButton(
-                              color: Colors.lightGreen,
+                            TextButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(StadiumBorder()),
+                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context, true);
                               },
@@ -161,7 +153,7 @@ class Metas extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context).voltar),
+                                      Text(AppLocalizations.of(context)!.voltar),
                                     ],
                                   )
                                 ],

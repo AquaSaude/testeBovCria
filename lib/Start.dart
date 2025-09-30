@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class Start extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -28,28 +28,28 @@ class Start extends StatelessWidget {
                               width: 100.0,
                             ),
                             Text(
-                              AppLocalizations.of(context).bemvindo,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.bemvindo,
+                              style: Theme.of(context).textTheme.titleLarge,
                               textAlign: TextAlign.center,
                             ),
                             Text(
-                              AppLocalizations.of(context).objetivo,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              AppLocalizations.of(context)!.objetivo,
+                              style: Theme.of(context).textTheme.titleMedium,
                               textAlign: TextAlign.justify,
                             ),
                             Text(
-                              AppLocalizations.of(context).calculo,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              AppLocalizations.of(context)!.calculo,
+                              style: Theme.of(context).textTheme.titleMedium,
                               textAlign: TextAlign.justify,
                             ),
                             Text(
-                              AppLocalizations.of(context).auxilio,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              AppLocalizations.of(context)!.auxilio,
+                              style: Theme.of(context).textTheme.titleMedium,
                               textAlign: TextAlign.justify,
                             ),
                             Text(
-                              AppLocalizations.of(context).utilize,
-                              style: Theme.of(context).textTheme.subtitle1,
+                              AppLocalizations.of(context)!.utilize,
+                              style: Theme.of(context).textTheme.titleMedium,
                               textAlign: TextAlign.center,
                             )
                           ],

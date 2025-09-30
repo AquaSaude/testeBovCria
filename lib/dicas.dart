@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 import 'dicas2.dart';
 
 class Dicas extends StatelessWidget {
   Widget build(BuildContext context) {
+    // Define o estilo para os TextButtons dentro da classe Dicas
+    final ButtonStyle dicasButtonStyle = TextButton.styleFrom(
+      backgroundColor: Colors.lightGreen,
+      foregroundColor: Colors.white,
+      padding: EdgeInsets.all(10.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+    );
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -24,8 +34,8 @@ class Dicas extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).dicasManejo,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.dicasManejo,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Card(
                               color: Colors.white,
@@ -33,10 +43,10 @@ class Dicas extends StatelessWidget {
                                 padding: EdgeInsets.all(15),
                                 child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: dicasButtonStyle,
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -44,22 +54,21 @@ class Dicas extends StatelessWidget {
                                                 builder: (context) =>
                                                     Dicas2(index: 1)));
                                       },
-                                      child: Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(MdiIcons.lightbulbOnOutline),
-                                              Text(AppLocalizations.of(context)
-                                                  .femeasGeral),
-                                            ],
-                                          )
+                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
+                                          SizedBox(width: 8), // Adicionado para espaçamento
+                                          Text(
+                                            AppLocalizations.of(context)!.femeasGeral,
+                                            style: TextStyle(color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: dicasButtonStyle,
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -67,22 +76,21 @@ class Dicas extends StatelessWidget {
                                                 builder: (context) =>
                                                     Dicas2(index: 2)));
                                       },
-                                      child: Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(MdiIcons.lightbulbOnOutline),
-                                              Text(AppLocalizations.of(context)
-                                                  .novilha),
-                                            ],
-                                          )
+                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
+                                          SizedBox(width: 8),
+                                          Text(
+                                            AppLocalizations.of(context)!.novilha,
+                                            style: TextStyle(color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: dicasButtonStyle,
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -90,22 +98,21 @@ class Dicas extends StatelessWidget {
                                                 builder: (context) =>
                                                     Dicas2(index: 3)));
                                       },
-                                      child: Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(MdiIcons.lightbulbOnOutline),
-                                              Text(AppLocalizations.of(context)
-                                                  .acasalamento),
-                                            ],
-                                          )
+                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
+                                          SizedBox(width: 8),
+                                          Text(
+                                            AppLocalizations.of(context)!.acasalamento,
+                                            style: TextStyle(color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: dicasButtonStyle,
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -113,22 +120,21 @@ class Dicas extends StatelessWidget {
                                                 builder: (context) =>
                                                     Dicas2(index: 4)));
                                       },
-                                      child: Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(MdiIcons.lightbulbOnOutline),
-                                              Text(AppLocalizations.of(context)
-                                                  .manejoReprod),
-                                            ],
-                                          )
+                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
+                                          SizedBox(width: 8),
+                                          Text(
+                                            AppLocalizations.of(context)!.manejoReprod,
+                                            style: TextStyle(color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: dicasButtonStyle,
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -136,17 +142,16 @@ class Dicas extends StatelessWidget {
                                                 builder: (context) =>
                                                     Dicas2(index: 5)));
                                       },
-                                      child: Column(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Icon(MdiIcons.lightbulbOnOutline),
-                                              Text(AppLocalizations.of(context)
-                                                  .estacao),
-                                            ],
-                                          )
+                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
+                                          SizedBox(width: 8),
+                                          Text(
+                                            AppLocalizations.of(context)!.estacao,
+                                            style: TextStyle(color: Colors.white),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -154,20 +159,20 @@ class Dicas extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            FlatButton(
-                              color: Colors.lightGreen,
+                            TextButton(
+                              style: dicasButtonStyle,
                               onPressed: () {
                                 Navigator.pop(context, true);
                               },
-                              child: Column(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context).voltar),
-                                    ],
-                                  )
+                                  Icon(Icons.arrow_back, color: Colors.white),
+                                  SizedBox(width: 8),
+                                  Text(
+                                    AppLocalizations.of(context)!.voltar,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ],
                               ),
                             ),

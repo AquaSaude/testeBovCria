@@ -1,7 +1,7 @@
 import 'package:bovcria/Taxas_Calculos.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bovcria/l10n/app_localizations.dart';
 
 class Taxas extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -24,8 +24,8 @@ class Taxas extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Text(
-                              AppLocalizations.of(context).taxas,
-                              style: Theme.of(context).textTheme.headline6,
+                              AppLocalizations.of(context)!.taxas,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Card(
                               color: Colors.white,
@@ -33,10 +33,13 @@ class Taxas extends StatelessWidget {
                                 padding: EdgeInsets.all(15),
                                 child: Column(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -50,18 +53,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .idade),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -75,18 +81,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .motalidade),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -100,18 +109,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .intervalo),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -125,18 +137,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .concepcao),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -150,18 +165,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .paricao),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -175,18 +193,21 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .desmame),
                                             ],
                                           )
                                         ],
                                       ),
                                     ),
-                                    FlatButton(
-                                      color: Colors.lightGreen,
+                                    TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                      ),
                                       onPressed: () {
                                         Navigator.push(
                                             context,
@@ -200,10 +221,10 @@ class Taxas extends StatelessWidget {
                                         children: <Widget>[
                                           Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: <Widget>[
                                               Icon(MdiIcons.chartLine),
-                                              Text(AppLocalizations.of(context)
+                                              Text(AppLocalizations.of(context)!
                                                   .desmame),
                                             ],
                                           )
@@ -214,9 +235,12 @@ class Taxas extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            FlatButton(
-                              shape: StadiumBorder(),
-                              color: Colors.lightGreen,
+                            TextButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(StadiumBorder()),
+                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                              ),
                               onPressed: () {
                                 Navigator.pop(context, true);
                               },
@@ -226,7 +250,7 @@ class Taxas extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context).voltar),
+                                      Text(AppLocalizations.of(context)!.voltar),
                                     ],
                                   )
                                 ],
