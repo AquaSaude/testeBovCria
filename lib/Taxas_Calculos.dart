@@ -91,8 +91,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           Text("\nVeja orientações em:"),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -120,8 +120,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           ),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -162,8 +162,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           Text("\nVeja orientações em:"),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -191,8 +191,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           ),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -238,8 +238,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           Text("\nVeja orientações em:"),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -267,8 +267,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           ),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -372,8 +372,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                       ),
                       TextButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                          foregroundColor: MaterialStateProperty.all(Colors.white),
+                          backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                          foregroundColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -402,8 +402,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                       ),
                       TextButton(
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                          foregroundColor: MaterialStateProperty.all(Colors.white),
+                          backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                          foregroundColor: WidgetStateProperty.all(Colors.white),
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -498,8 +498,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                           ),
                           TextButton(
                             style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                              foregroundColor: WidgetStateProperty.all(Colors.white),
                             ),
                             onPressed: () {
                               Navigator.push(
@@ -562,7 +562,7 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                             hintText: 'Selecione uma das categorias',
                             border: OutlineInputBorder(),
                           ),
-                          value: _myActivity.isNotEmpty ? _myActivity : null,
+                          initialValue: _myActivity.isNotEmpty ? _myActivity : null,
                           onChanged: (value) {
                             setState(() {
                               _myActivity = value!;
@@ -789,8 +789,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                               ),
                               TextButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                  backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                  foregroundColor: WidgetStateProperty.all(Colors.white),
                                 ),
                                 onPressed: () {
                                   Navigator.push(
@@ -818,8 +818,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                               ),
                               TextButton(
                                 style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                  backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                  foregroundColor: WidgetStateProperty.all(Colors.white),
                                 ),
                                 onPressed: () {
                                   Navigator.push(context,
@@ -879,7 +879,7 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                               hintText: 'Selecione uma das categorias',
                               border: OutlineInputBorder(),
                             ),
-                            value: _myActivity.isNotEmpty ? _myActivity : null,
+                            initialValue: _myActivity.isNotEmpty ? _myActivity : null,
                             onChanged: (value) {
                               setState(() {
                                 _myActivity = value!;
@@ -986,9 +986,9 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
                             padding: EdgeInsets.all(5),
                             child: TextButton(
                               style: ButtonStyle(
-                                shape: MaterialStateProperty.all(StadiumBorder()),
-                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                shape: WidgetStateProperty.all(StadiumBorder()),
+                                backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                foregroundColor: WidgetStateProperty.all(Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.pop(context, true);

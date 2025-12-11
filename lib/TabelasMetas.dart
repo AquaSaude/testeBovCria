@@ -1517,6 +1517,7 @@ class TabelasMetas extends StatelessWidget {
                     ),
                   ])));
     }
+    return null;
   }
 
   @override
@@ -1546,8 +1547,8 @@ class TabelasMetas extends StatelessWidget {
                             tabela(this.index, context)!,
                             TextButton(
                               style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                foregroundColor: WidgetStateProperty.all(Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.pop(context, true);

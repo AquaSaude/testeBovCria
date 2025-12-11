@@ -43,8 +43,8 @@ class Metas extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                        backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: WidgetStateProperty.all(Colors.white),
                                       ),
                                       onPressed: () {
                                         Navigator.push(
@@ -74,8 +74,8 @@ class Metas extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                        backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: WidgetStateProperty.all(Colors.white),
                                       ),
                                       onPressed: () {
                                         Navigator.push(
@@ -105,8 +105,8 @@ class Metas extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                        backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                        foregroundColor: WidgetStateProperty.all(Colors.white),
                                       ),
                                       onPressed: () {
                                         Navigator.push(
@@ -140,9 +140,9 @@ class Metas extends StatelessWidget {
                             ),
                             TextButton(
                               style: ButtonStyle(
-                                shape: MaterialStateProperty.all(StadiumBorder()),
-                                backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                shape: WidgetStateProperty.all(StadiumBorder()),
+                                backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                foregroundColor: WidgetStateProperty.all(Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.pop(context, true);

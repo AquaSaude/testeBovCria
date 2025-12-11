@@ -254,9 +254,9 @@ class Info2 extends StatelessWidget {
                               padding: EdgeInsets.all(5),
                               child: TextButton(
                                 style: ButtonStyle(
-                                  shape: MaterialStateProperty.all(StadiumBorder()),
-                                  backgroundColor: MaterialStateProperty.all(Colors.lightGreen),
-                                  foregroundColor: MaterialStateProperty.all(Colors.white),
+                                  shape: WidgetStateProperty.all(StadiumBorder()),
+                                  backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+                                  foregroundColor: WidgetStateProperty.all(Colors.white),
                                 ),
                                 onPressed: () {
                                   Navigator.pop(context, true);

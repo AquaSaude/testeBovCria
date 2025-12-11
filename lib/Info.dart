@@ -51,24 +51,24 @@ class Info extends StatelessWidget {
                                     width: largura,
                                     child: TextButton(
                                         style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.grey;
                                               }
                                               return Colors.lightGreen;
                                             },
                                           ),
-                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.black;
                                               }
                                               return Colors.white;
                                             },
                                           ),
-                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
-                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                          padding: WidgetStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: WidgetStateProperty.all(Colors.lightGreenAccent),
                                         ),
                                         onPressed: () {
                                           Navigator.push(
@@ -112,24 +112,24 @@ class Info extends StatelessWidget {
                                     width: largura,
                                     child: TextButton(
                                         style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.grey;
                                               }
                                               return Colors.lightGreen;
                                             },
                                           ),
-                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.black;
                                               }
                                               return Colors.white;
                                             },
                                           ),
-                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
-                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                          padding: WidgetStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: WidgetStateProperty.all(Colors.lightGreenAccent),
                                         ),
                                         onPressed: () {
                                           Navigator.push(
@@ -173,24 +173,24 @@ class Info extends StatelessWidget {
                                     width: largura,
                                     child: TextButton(
                                         style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.grey;
                                               }
                                               return Colors.lightGreen;
                                             },
                                           ),
-                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.black;
                                               }
                                               return Colors.white;
                                             },
                                           ),
-                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
-                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                          padding: WidgetStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: WidgetStateProperty.all(Colors.lightGreenAccent),
                                         ),
                                         onPressed: () async { // Adicionado 'async'
                                           final Uri emailLaunchUri = Uri(
@@ -239,24 +239,24 @@ class Info extends StatelessWidget {
                                     width: largura,
                                     child: TextButton(
                                         style: ButtonStyle(
-                                          backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.grey;
                                               }
                                               return Colors.lightGreen;
                                             },
                                           ),
-                                          foregroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                                (Set<MaterialState> states) {
-                                              if (states.contains(MaterialState.disabled)) {
+                                          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                                                (Set<WidgetState> states) {
+                                              if (states.contains(WidgetState.disabled)) {
                                                 return Colors.black;
                                               }
                                               return Colors.white;
                                             },
                                           ),
-                                          padding: MaterialStateProperty.all(EdgeInsets.all(15.0)),
-                                          overlayColor: MaterialStateProperty.all(Colors.lightGreenAccent),
+                                          padding: WidgetStateProperty.all(EdgeInsets.all(15.0)),
+                                          overlayColor: WidgetStateProperty.all(Colors.lightGreenAccent),
                                         ),
                                         onPressed: () {
                                           Share.share(

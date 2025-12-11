@@ -1,14 +1,11 @@
 import 'package:bovcria/dicas2.dart';
 import 'package:flutter/material.dart';
-import 'Info.dart';
 import 'Metas.dart';
 import 'Taxas.dart';
-import 'dicas.dart';
 import 'voce_sabia.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:bovcria/l10n/app_localizations.dart';
 
-import 'TabelasMetas.dart';
 
 class Content extends StatelessWidget {
   double largura = 0;

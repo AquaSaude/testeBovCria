@@ -559,7 +559,7 @@ class _Taxas_Calculos_2State extends State<Taxas_Calculos_2> {
                         labelText: 'Categoria',
                         hintText: 'Selecione uma das categorias',
                       ),
-                      value: _myActivity,
+                      initialValue: _myActivity,
                       onChanged: (String? newValue) {
                         setState(() {
                           _myActivity = newValue;
@@ -651,7 +651,7 @@ class _Taxas_Calculos_2State extends State<Taxas_Calculos_2> {
                         labelText: 'Categoria',
                         hintText: 'Selecione uma das categorias',
                       ),
-                      value: _myActivity,
+                      initialValue: _myActivity,
                       onChanged: (String? newValue) {
                         setState(() {
                           _myActivity = newValue;
@@ -740,7 +740,7 @@ class _Taxas_Calculos_2State extends State<Taxas_Calculos_2> {
                         labelText: 'Categoria',
                         hintText: 'Selecione uma das categorias',
                       ),
-                      value: _myActivity,
+                      initialValue: _myActivity,
                       onChanged: (String? newValue) {
                         setState(() {
                           _myActivity = newValue;
