@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:bovcria/l10n/app_localizations.dart';
-import 'package:bovcria/TabelasMetas.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 // A importação de 'flutter_email_sender' foi removida, pois não é mais utilizada aqui.
 
 class Info2 extends StatelessWidget {
