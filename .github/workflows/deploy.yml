@@ -1,0 +1,45 @@
+name: Auto-Deploy Flutter Web para Vercel
+on:
+  push:
+    branches:
+      - master
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Cache do SDK do Flutter
+        id: cache-flutter
+        uses: actions/cache@v4
+        with:
+          path: ./flutter
+          key: flutter-sdk-stable-${{ runner.os }}
+
+      - name: Instalar Flutter
+        if: steps.cache-flutter.outputs.cache-hit != 'true'
+        run: git clone https://github.com/flutter/flutter.git -b stable
+
+      - name: Cache das dependências do pub
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: pub-cache-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            pub-cache-${{ runner.os }}-
+
+      - name: Instalar Dependências do Projeto
+        run: ./flutter/bin/flutter pub get
+
+      - name: Build do Flutter Web
+        run: ./flutter/bin/flutter build web
+
+      - name: Instalar Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Deploy para a Vercel
+        run: vercel deploy build/web --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
