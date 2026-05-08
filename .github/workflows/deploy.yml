@@ -36,7 +36,7 @@ jobs:
         run: ./flutter/bin/flutter pub get
 
       - name: Build do Flutter Web
-        run: ./flutter/bin/flutter build web
+        run: ./flutter/bin/flutter build web --no-tree-shake-icons
 
       - name: Instalar Vercel CLI
         run: npm install --global vercel@latest
