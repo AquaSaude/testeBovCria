@@ -2,16 +2,40 @@
 
 BovCria
 
-## Getting Started
+## Como a aplicação funciona?
 
-This project is a starting point for a Flutter application.
+Atualmente (Abril 2026), a aplicação é utilizada exclusivamente em sua versão Web.
 
-A few resources to get you started if this is your first Flutter project:
+Para rodar:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+1. **Pré-requisitos:** Ter o Flutter SDK instalado 
+2. **Baixar as dependências:**
+   ```bash
+    flutter pub get
+3. **Rode o aplicativo**
+    ```bash
+    flutter run -d web-server
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# BovCria
+(Rode esses comandos no terminal!)
+
+## ⚠️ ATENÇÃO! ⚠️
+
+**Não** realize commits diretamente na branch `main`. Todo commit na `main` dispara um workflow de deploy automático para **produção**. Use **sempre** Pull Requests a partir de suas branches de **feature**.
+
+## Hospedagem
+
+A aplicação é hospedada na Vercel. Devido a limitações de permissão de deploy automático em contas gratuitas para múltiplos colaboradores, utilizamos uma solução via GitHub Actions.
+
+#### Fluxo de Deploy
+O arquivo `.github/workflow/deploy.yml` utiliza a **Vercel CLI** para realizar o build e o upload da aplicação.
+
+#### Variáveis de Ambiente (Secrets):
+Para que o deploy funcione, as seguintes Secrets devem estar configuradas no repositório:
+
+`VERCEL_TOKEN`: Token de acesso à conta AquaSaude.
+
+`VERCEL_PROJECT_ID`: Identificador único do projeto BovCria.
+
+`VERCEL_ORG_ID`: ID da organização na Vercel.
+
+**SEGURANÇA**: Nunca exponha esses tokens em arquivos públicos ou logs de console.
