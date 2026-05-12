@@ -18,6 +18,11 @@ class Dicas extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+        centerTitle: true,
+        title: const Text('BovCria'),
+        backgroundColor: Colors.green,
+      ),
         backgroundColor: Color(0xFF77dd77),
         body: ListView(
           children: <Widget>[
@@ -45,116 +50,31 @@ class Dicas extends StatelessWidget {
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceAround,
                                   children: <Widget>[
-                                    TextButton(
-                                      style: dicasButtonStyle,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Dicas2(index: 1)));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
-                                          SizedBox(width: 8), // Adicionado para espaçamento
-                                          Text(
-                                            AppLocalizations.of(context)!.femeasGeral,
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: dicasButtonStyle,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Dicas2(index: 2)));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            AppLocalizations.of(context)!.novilha,
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: dicasButtonStyle,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Dicas2(index: 3)));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            AppLocalizations.of(context)!.acasalamento,
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: dicasButtonStyle,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Dicas2(index: 4)));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            AppLocalizations.of(context)!.manejoReprod,
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: dicasButtonStyle,
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Dicas2(index: 5)));
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Icon(MdiIcons.lightbulbOnOutline, color: Colors.white),
-                                          SizedBox(width: 8),
-                                          Text(
-                                            AppLocalizations.of(context)!.estacao,
-                                            style: TextStyle(color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                    _buildStackedButton(
+                                        context,
+                                        MdiIcons.lightbulbOnOutline,
+                                        AppLocalizations.of(context)!.femeasGeral,
+                                        1),
+                                    _buildStackedButton(
+                                        context,
+                                        MdiIcons.lightbulbOnOutline,
+                                        AppLocalizations.of(context)!.novilha,
+                                        2),
+                                    _buildStackedButton(
+                                        context,
+                                        MdiIcons.lightbulbOnOutline,
+                                        AppLocalizations.of(context)!.acasalamento,
+                                        3),
+                                    _buildStackedButton(
+                                        context,
+                                        MdiIcons.lightbulbOnOutline,
+                                        AppLocalizations.of(context)!.manejoReprod,
+                                        4),
+                                    _buildStackedButton(
+                                        context,
+                                        MdiIcons.lightbulbOnOutline,
+                                        AppLocalizations.of(context)!.estacao,
+                                        5),
                                   ],
                                 ),
                               ),
@@ -185,6 +105,47 @@ class Dicas extends StatelessWidget {
               ),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStackedButton(
+      BuildContext context, IconData icon, String text, int index) {
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: 450),
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(bottom: 15),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.lightGreen,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Dicas2(index: index),
+              ),
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Icon(icon, size: 28),
+              SizedBox(width: 20),
+              Expanded(
+                child: Text(
+                  text,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

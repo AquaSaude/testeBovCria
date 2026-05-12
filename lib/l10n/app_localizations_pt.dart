@@ -141,7 +141,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get fatores =>
-      '• Entre os fatores que explicam a variação do peso da mãe ao parto, os principais são a nutrição durante o período gestacional (50%) e a idade da mãe (17%);\n • Os principais fatores que influenciam as variações do peso ao nascer dos bezerros são: peso da mãe ao parto (26%), raça do pai (11%), sexo do bezerro (5%); e, não considerando o peso da mãe ao parto, 20% referência-se a nutrição materna durante a gestação, 8% à raça do pai, 6% à idade da mãe e 4% ao sexo do bezerro;\n • Os principais fatores que influenciam as variações do peso ao desmame do bebê são: nutrição da mãe durante a lactação (41%), peso da mãe ao parto (14%), idade do bebê ao desmame (6%), sexo (5%) e peso ao nascer (3%);\n • Entre os fatores que influenciam o peso dos animais ao sobreano destacam-se: peso ao desmame (48%), peso ao nascer (13%), sexo (9%) e idade da mãe (2%).\n';
+      '• Entre os fatores que explicam a variação do peso da mãe ao parto, os principais são a nutrição durante o período gestacional (50%) e a idade da mãe (17%);\n • Os principais fatores que influenciam as variações do peso ao nascer dos bezerros são: peso da mãe ao parto (26%), efeito do pai (11%), sexo do bezerro (5%); e, não considerando o peso da mãe ao parto, 20% referência-se a nutrição materna durante a gestação, 8% à efeito do pai, 6% à idade da mãe e 4% ao sexo do bezerro;\n • Os principais fatores que influenciam as variações do peso ao desmame do bezerro são: nutrição da mãe durante a lactação (41%), peso da mãe ao parto (14%), idade do bezerro ao desmame (6%), sexo (5%) e peso ao nascer (3%);\n • Entre os fatores que influenciam o peso dos animais ao sobreano destacam-se: peso ao desmame (48%), peso ao nascer (13%), sexo (9%) e idade da mãe (2%).\n';
 
   @override
   String get inicio => 'INICIO';
@@ -337,4 +337,53 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get error => 'ERRO!:';
+
+  @override
+  String get prodBezerroFemeaTitulo =>
+      'Produção Real de kg de bezerro desmamado/fêmea/ano';
+
+  @override
+  String get prodBezerroFemeaSub =>
+      'A eficiência do rebanho de cria é avaliada pela produção real de kg de bezerro desmamado por fêmea anualmente. A meta é obter valores acima de 170 kg para todas as categorias.';
+
+  @override
+  String get prodBezerroAreaTitulo =>
+      'Produção Real de kg de bezerro desmamado por área';
+
+  @override
+  String get categoriaLabel => 'Categoria';
+
+  @override
+  String get catGeral => 'Cálculo geral';
+
+  @override
+  String get pesoBezerroLabel => 'Informe o peso do bezerro desmamado em Kg';
+
+  @override
+  String get areaUtilizadaLabel =>
+      'Informe a área da propriedade em ha (hectares) utilizada para produção do rebanho de cria';
+
+  @override
+  String get btnCalcular => 'Calcular';
+
+  @override
+  String get resultadoTitulo => 'RESULTADO';
+
+  @override
+  String get resultadoPrefixo => 'Seu resultado é:';
+
+  @override
+  String get catSelecionadaPrefixo => 'Categoria selecionada:';
+
+  @override
+  String get verifiqueMeta170 =>
+      'Verifique se o seu resultado está acima ou abaixo de 170 kg. Caso seu resultado esteja abaixo deste valor, veja:';
+
+  @override
+  String get verifiqueMeta20ha =>
+      'Verifique se o seu resultado está acima ou abaixo de 20 kg/ha. Caso seu resultado esteja abaixo deste valor, veja:';
+
+  @override
+  String get erroPreenchimento =>
+      'ERRO: Preencha todos os campos corretamente com valores maiores que zero e selecione uma categoria.';
 }

@@ -40,7 +40,7 @@
   "especifProdBovCorte":"Production and market specifications for beef cattle",
   "vocesabia":"\nDid you know that...\n",
   "fontesVocesabia":"Source: Greenwood, Clayton, and Bell. doi:10.2527/af.2017-0127",
-  "fatores":"• Among the factors that explain the variation in the mother's weight at birth, the main ones are nutrition during the gestational period (50%) and the mother's age (17%);\n • The main factors that influence variations in birth weight of calves are: mother's birth weight (26%), father's race (11%), calf's sex (5%); and, not considering the mother's weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father's race, 6% to the mother's age and 4% to the calf's sex;\n • The main factors influencing changes in the baby's weaning weight are: mother's nutrition during lactation (41%), mother's weight at birth (14%), baby's age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother's age (2%).\n",
+  "fatores":"• Among the factors that explain the variation in the mother's weight at birth, the main ones are nutrition during the gestational period (50%) and the mother's age (17%);\n • The main factors that influence variations in birth weight of calves are: mother's birth weight (26%), father's race (11%), calf's sex (5%); and, not considering the mother's weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father's race, 6% to the mother's age and 4% to the calf's sex;\n • The main factors influencing changes in the calf's weaning weight are: mother's nutrition during lactation (41%), mother's weight at birth (14%), calf's age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother's age (2%).\n",
   "inicio":"START",
   "desenvolvimento":"Development",
   "coordenacao":"Coordinators",
@@ -101,14 +101,19 @@
   "reservePotreiroMaternidade":"\n• Reserve a maternity paddock that allows greater control of the animals, with a good supply of forage, water and shade;\n\n• Try to concentrate calving on the first 42 days of the season;\n\n• Check if the dam was interested and caring for the newborn calf mainly among first-calf heifers;\n\n• Make sure the calf has suckled colostrum;\n\n• Dip the calf's navel with antiseptic solutions;\n\n• Record all occurrences related to calving such as: type of calving (normal or assisted), occurrence of  retained placenta, stillbirths, deformities, among others) and, if possible, weigh the calf and its dam within 24 hours of birth;\n\n• Start dosing with endoparasitic from 3 months of age and repeat every 2 months, remember that these animals need strategic deverminations up to 2 years of age at least.\n",
   "erroInformeValor":"ERROR!!Enter a value greater than zero (0) and/or use a period(.) instead of a comma(,).",
   "taxaGeralMortAnualRabanho":"General annual herd mortality rate",
-  "error":"ERROR!:"
-  
-  
-  
-
-  
- 
-  
-  
-
+  "error":"ERROR!:",
+  "prodBezerroFemeaTitulo": "Real production of kg of weaned/female calf/year",
+  "prodBezerroFemeaSub": "The efficiency of the cow-calf systems is evaluated by the actual production of kg of weaned calf per female annually.",
+  "prodBezerroAreaTitulo": "Real production of kg of calf weaned by area",
+  "categoriaLabel": "Category",
+  "catGeral": "General calculation",
+  "pesoBezerroLabel": "Inform the weight of the weaned calf in Kg",
+  "areaUtilizadaLabel": "Inform the area of the property in ha (hectares) used for the production of the breeding herd",
+  "btnCalcular": "Calculate",
+  "resultadoTitulo": "RESULT",
+  "resultadoPrefixo": "Your result is:",
+  "catSelecionadaPrefixo": "Selected Category:",
+  "verifiqueMeta170": "Check if your result is above or below 170 kg.If your result is below this value, see:",
+  "verifiqueMeta20ha": "Check if your result is above or below 20 kg/ha. If your result is below this value, see:",
+  "erroPreenchimento": "ERROR! Calf weight: Use values ​​greater than zero and select one of the categories listed above!"
 }

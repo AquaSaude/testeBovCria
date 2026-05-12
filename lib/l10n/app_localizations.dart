@@ -347,7 +347,7 @@ abstract class AppLocalizations {
   /// No description provided for @fatores.
   ///
   /// In en, this message translates to:
-  /// **'• Among the factors that explain the variation in the mother\'s weight at birth, the main ones are nutrition during the gestational period (50%) and the mother\'s age (17%);\n • The main factors that influence variations in birth weight of calves are: mother\'s birth weight (26%), father\'s race (11%), calf\'s sex (5%); and, not considering the mother\'s weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father\'s race, 6% to the mother\'s age and 4% to the calf\'s sex;\n • The main factors influencing changes in the baby\'s weaning weight are: mother\'s nutrition during lactation (41%), mother\'s weight at birth (14%), baby\'s age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother\'s age (2%).\n'**
+  /// **'• Among the factors that explain the variation in the mother\'s weight at birth, the main ones are nutrition during the gestational period (50%) and the mother\'s age (17%);\n • The main factors that influence variations in birth weight of calves are: mother\'s birth weight (26%), father\'s race (11%), calf\'s sex (5%); and, not considering the mother\'s weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father\'s race, 6% to the mother\'s age and 4% to the calf\'s sex;\n • The main factors influencing changes in the calf\'s weaning weight are: mother\'s nutrition during lactation (41%), mother\'s weight at birth (14%), calf\'s age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother\'s age (2%).\n'**
   String get fatores;
 
   /// No description provided for @inicio.
@@ -715,6 +715,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ERROR!:'**
   String get error;
+
+  /// No description provided for @prodBezerroFemeaTitulo.
+  ///
+  /// In en, this message translates to:
+  /// **'Real production of kg of weaned/female calf/year'**
+  String get prodBezerroFemeaTitulo;
+
+  /// No description provided for @prodBezerroFemeaSub.
+  ///
+  /// In en, this message translates to:
+  /// **'The efficiency of the cow-calf systems is evaluated by the actual production of kg of weaned calf per female annually.'**
+  String get prodBezerroFemeaSub;
+
+  /// No description provided for @prodBezerroAreaTitulo.
+  ///
+  /// In en, this message translates to:
+  /// **'Real production of kg of calf weaned by area'**
+  String get prodBezerroAreaTitulo;
+
+  /// No description provided for @categoriaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get categoriaLabel;
+
+  /// No description provided for @catGeral.
+  ///
+  /// In en, this message translates to:
+  /// **'General calculation'**
+  String get catGeral;
+
+  /// No description provided for @pesoBezerroLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Inform the weight of the weaned calf in Kg'**
+  String get pesoBezerroLabel;
+
+  /// No description provided for @areaUtilizadaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Inform the area of the property in ha (hectares) used for the production of the breeding herd'**
+  String get areaUtilizadaLabel;
+
+  /// No description provided for @btnCalcular.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate'**
+  String get btnCalcular;
+
+  /// No description provided for @resultadoTitulo.
+  ///
+  /// In en, this message translates to:
+  /// **'RESULT'**
+  String get resultadoTitulo;
+
+  /// No description provided for @resultadoPrefixo.
+  ///
+  /// In en, this message translates to:
+  /// **'Your result is:'**
+  String get resultadoPrefixo;
+
+  /// No description provided for @catSelecionadaPrefixo.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected Category:'**
+  String get catSelecionadaPrefixo;
+
+  /// No description provided for @verifiqueMeta170.
+  ///
+  /// In en, this message translates to:
+  /// **'Check if your result is above or below 170 kg.If your result is below this value, see:'**
+  String get verifiqueMeta170;
+
+  /// No description provided for @verifiqueMeta20ha.
+  ///
+  /// In en, this message translates to:
+  /// **'Check if your result is above or below 20 kg/ha. If your result is below this value, see:'**
+  String get verifiqueMeta20ha;
+
+  /// No description provided for @erroPreenchimento.
+  ///
+  /// In en, this message translates to:
+  /// **'ERROR! Calf weight: Use values ​​greater than zero and select one of the categories listed above!'**
+  String get erroPreenchimento;
 }
 
 class _AppLocalizationsDelegate
