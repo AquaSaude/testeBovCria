@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:bovcria/l10n/app_localizations.dart';
 
-import './layouts/layout_base_button.dart';
 import './layouts/layout_base_card.dart';
 
-import './paginas-taxas/idade_primeiro_parto_card.dart';
-import './paginas-taxas/intervalo_partos_card.dart';
-import './paginas-taxas/menu_mortalidade_card.dart';
-import './paginas-taxas/taxas_concepcao_card.dart';
-import './paginas-taxas/menu_taxas_producao.dart';
+import 'paginas-taxas/primeiro-parto/idade_primeiro_parto_card.dart';
+import 'paginas-taxas/intervalo-partos/intervalo_partos_card.dart';
+import 'paginas-taxas/mortalidade/menu_mortalidade.dart';
+import 'paginas-taxas/concepcao/taxas_concepcao_card.dart';
+import 'paginas-taxas/producao/menu_producao.dart';
+import 'paginas-taxas/desmame/menu_desmame.dart';
 
 class Taxas_Calculos extends StatefulWidget {
   final int index;
@@ -47,6 +47,8 @@ class _Taxas_CalculosState extends State<Taxas_Calculos> {
         return const IdadePrimeiroPartoCard();
       case 2:
         return const TaxaConcepcaoCard();
+      case 4:
+        return const MenuDesmameCard();
       case 5:
         return const IntervaloPartosCard();
       case 6:

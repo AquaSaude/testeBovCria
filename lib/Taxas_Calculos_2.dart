@@ -189,7 +189,7 @@ class _Taxas_Calculos_2State extends State<Taxas_Calculos_2> {
         hintText: 'Selecione uma das categorias',
         border: OutlineInputBorder(),
       ),
-      value: _categoriaSelecionada,
+      initialValue: _categoriaSelecionada,
       onChanged: (v) => setState(() => _categoriaSelecionada = v),
       items: _categorias
           .map((c) => DropdownMenuItem(value: c.value, child: Text(c.display)))

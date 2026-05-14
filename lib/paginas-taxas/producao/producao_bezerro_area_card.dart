@@ -4,17 +4,18 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import '../../layouts/layout_base_card.dart';
 import '../../dicas.dart';
 
-class ProducaoBezerroFemeaCard extends StatefulWidget {
-  const ProducaoBezerroFemeaCard({Key? key}) : super(key: key);
+class ProducaoBezerroAreaCard extends StatefulWidget {
+  const ProducaoBezerroAreaCard({Key? key}) : super(key: key);
 
   @override
-  State<ProducaoBezerroFemeaCard> createState() =>
-      _ProducaoBezerroFemeaCardState();
+  State<ProducaoBezerroAreaCard> createState() =>
+      _ProducaoBezerroAreaCardState();
 }
 
-class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
+class _ProducaoBezerroAreaCardState extends State<ProducaoBezerroAreaCard> {
   final TextEditingController _pesoController = TextEditingController();
   final TextEditingController _intervaloController = TextEditingController();
+  final TextEditingController _areaController = TextEditingController();
 
   String _categoriaSelecionada = "";
   Widget? _cardResultado;
@@ -23,24 +24,29 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
   void dispose() {
     _pesoController.dispose();
     _intervaloController.dispose();
+    _areaController.dispose();
     super.dispose();
   }
 
-  void _calcularResultado(AppLocalizations loc) {
+  void _calcularResultado() {
     FocusScope.of(context).unfocus();
 
     String pesoFormatado = _pesoController.text.replaceAll(",", ".");
     String intervaloFormatado = _intervaloController.text.replaceAll(",", ".");
+    String areaFormatada = _areaController.text.replaceAll(",", ".");
 
     double? peso = double.tryParse(pesoFormatado);
     int? intervalo = int.tryParse(intervaloFormatado);
+    double? area = double.tryParse(areaFormatada);
 
     Widget novoCard;
 
     if (peso == null ||
         intervalo == null ||
+        area == null ||
         peso <= 0 ||
         intervalo <= 0 ||
+        area <= 0 ||
         _categoriaSelecionada.isEmpty) {
       novoCard = Container(
         margin: const EdgeInsets.only(top: 20),
@@ -50,29 +56,30 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(color: Colors.red.shade200),
         ),
-        child: Text(
-          loc.erroPreenchimento,
-          style:
-              const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+        child: const Text(
+          "ERRO: Preencha todos os campos com valores maiores que zero e selecione uma categoria.",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
       );
     } else {
-      double resultado = (peso * 365) / intervalo;
+      // Formula: ((peso x 365) / intervalo) / area
+      double taxaFemeaAno = (peso * 365) / intervalo;
+      double resultadoArea = taxaFemeaAno / area;
 
       String categoriaNome = "";
       switch (_categoriaSelecionada) {
         case "1":
-          categoriaNome = loc.novilhameses;
+          categoriaNome = "Novilhas de 13-24 meses";
           break;
         case "2":
-          categoriaNome = loc.novilhameses1;
+          categoriaNome = "Novilhas de 25-36 meses";
           break;
         case "3":
-          categoriaNome = loc.vacamaior;
+          categoriaNome = "Vacas > 36 meses";
           break;
         default:
-          categoriaNome = loc.catGeral;
+          categoriaNome = "Cálculo geral";
       }
 
       novoCard = Container(
@@ -87,17 +94,17 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              loc.resultadoTitulo,
+              "RESULTADO",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const Divider(),
             Text(
-              "• ${loc.resultadoPrefixo} ${resultado.toStringAsFixed(2)} kg\n",
+              "• Seu resultado é: ${resultadoArea.toStringAsFixed(2)} kg/ha\n",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            Text("• ${loc.catSelecionadaPrefixo} $categoriaNome\n"),
-            Text(
-              "• ${loc.verifiqueMeta170}",
+            Text("• Categoria selecionada: $categoriaNome\n"),
+            const Text(
+              "• Verifique se o seu resultado está acima ou abaixo de 20 kg/ha. Se abaixo deste valor, veja orientações em dicas de manejo para melhorar o desempenho.",
               textAlign: TextAlign.justify,
             ),
             const SizedBox(height: 16),
@@ -114,8 +121,8 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
                       MaterialPageRoute(builder: (context) => Dicas()));
                 },
                 icon: const Icon(MdiIcons.lightbulbOnOutline),
-                label:
-                    Text(loc.dicasManejo, style: const TextStyle(fontSize: 16)),
+                label: const Text("Dicas de Manejo",
+                    style: TextStyle(fontSize: 16)),
               ),
             )
           ],
@@ -130,8 +137,6 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context)!;
-
     return Scaffold(
       backgroundColor: const Color(0xFF77dd77),
       appBar: AppBar(
@@ -140,15 +145,16 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
         backgroundColor: Colors.green,
       ),
       body: LayoutBaseCard(
-        titulo: loc.prodBezerroFemeaTitulo,
-        subtitulo: loc.prodBezerroFemeaSub,
+        titulo: "Produção de bezerro desmamado por área",
+        subtitulo:
+            "A eficiência é avaliada pela produção real de kg de bezerro desmamado por fêmea anualmente por área utilizada (ha). A meta é 20 Kg/ha.",
         filhos: [
           DropdownButtonFormField<String>(
-            decoration: InputDecoration(
-              labelText: loc.categoriaLabel,
-              border: const OutlineInputBorder(),
+            decoration: const InputDecoration(
+              labelText: 'Categoria',
+              border: OutlineInputBorder(),
             ),
-            value:
+            initialValue:
                 _categoriaSelecionada.isNotEmpty ? _categoriaSelecionada : null,
             onChanged: (value) {
               if (value != null) {
@@ -157,29 +163,40 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
                 });
               }
             },
-            items: [
-              DropdownMenuItem(value: "1", child: Text(loc.novilhameses)),
-              DropdownMenuItem(value: "2", child: Text(loc.novilhameses1)),
-              DropdownMenuItem(value: "3", child: Text(loc.vacamaior)),
-              DropdownMenuItem(value: "4", child: Text(loc.catGeral)),
+            items: const [
+              DropdownMenuItem(
+                  value: "1", child: Text("Novilhas de 13-24 meses")),
+              DropdownMenuItem(
+                  value: "2", child: Text("Novilhas de 25-36 meses")),
+              DropdownMenuItem(value: "3", child: Text("Vacas > 36 meses")),
+              DropdownMenuItem(value: "4", child: Text("Cálculo geral")),
             ],
           ),
           const SizedBox(height: 16),
           TextField(
             controller: _pesoController,
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            decoration: InputDecoration(
-              labelText: loc.pesoBezerroLabel,
-              border: const OutlineInputBorder(),
+            decoration: const InputDecoration(
+              labelText: "Peso do bezerro desmamado (kg)",
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 16),
           TextField(
             controller: _intervaloController,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: loc.intervalo,
-              border: const OutlineInputBorder(),
+            decoration: const InputDecoration(
+              labelText: "Intervalo entre partos da fêmea (dias)",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _areaController,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            decoration: const InputDecoration(
+              labelText: "Área utilizada (ha)",
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 24),
@@ -190,15 +207,15 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
             ),
-            onPressed: () => _calcularResultado(loc),
-            child: Row(
+            onPressed: _calcularResultado,
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(Icons.send),
-                const SizedBox(width: 8),
-                Text("Enviar",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18)),
+                Icon(Icons.calculate),
+                SizedBox(width: 8),
+                Text("Calcular",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               ],
             ),
           ),
@@ -224,6 +241,9 @@ class _ProducaoBezerroFemeaCardState extends State<ProducaoBezerroFemeaCard> {
                   AppLocalizations.of(context)!.voltar,
                   style: const TextStyle(
                       fontSize: 16, fontWeight: FontWeight.bold),
+
+
+                      
                 ),
               ],
             ),

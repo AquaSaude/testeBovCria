@@ -1,7 +1,7 @@
 import 'package:bovcria/dicas.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../TabelasMetas.dart';
+import '../../TabelasMetas.dart';
 import 'package:bovcria/l10n/app_localizations.dart';
 
 class IdadePrimeiroPartoCard extends StatefulWidget {
@@ -62,7 +62,7 @@ class _IdadePrimeiroPartoCardState extends State<IdadePrimeiroPartoCard> {
               titulo,
               style: isAlerta
                   ? TextStyle(
-                      color: Colors.red.withOpacity(0.8),
+                      color: Colors.red.withValues(alpha: 0.8),
                       fontWeight: FontWeight.bold,
                     )
                   : null,
@@ -70,10 +70,9 @@ class _IdadePrimeiroPartoCardState extends State<IdadePrimeiroPartoCard> {
             const Text("\nVeja orientações em:"),
             _buildBotaoAcao(
               icone: MdiIcons.tableLarge,
-              texto: AppLocalizations.of(context)!.indicesGeraisRebCria ??
-                  "Índices gerais do rebanho de cria",
+              texto: "Índices gerais do rebanho de cria",
               destino: TabelasMetas(
-                  index: 2), // Verifique se precisa passar contexto/imports
+                  index: 2), 
             ),
             const SizedBox(height: 10),
             _buildBotaoAcao(

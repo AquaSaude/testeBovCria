@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 import 'package:bovcria/l10n/app_localizations.dart';
 
 class TabelasMetas extends StatelessWidget {
