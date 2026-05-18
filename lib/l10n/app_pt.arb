@@ -37,7 +37,7 @@
   "especifProdBovCorte":"Especificações de produção e de mercado para bovinos  de corte",
   "vocesabia":"\nVocê Sabia Que...\n",
   "fontesVocesabia":"Fonte: Greenwood, Clayton, and Bell. doi:10.2527/af.2017-0127",
-  "fatores":"• Entre os fatores que explicam a variação do peso da mãe ao parto, os principais são a nutrição durante o período gestacional (50%) e a idade da mãe (17%);\n • Os principais fatores que influenciam as variações do peso ao nascer dos bezerros são: peso da mãe ao parto (26%), raça do pai (11%), sexo do bezerro (5%); e, não considerando o peso da mãe ao parto, 20% referência-se a nutrição materna durante a gestação, 8% à raça do pai, 6% à idade da mãe e 4% ao sexo do bezerro;\n • Os principais fatores que influenciam as variações do peso ao desmame do bebê são: nutrição da mãe durante a lactação (41%), peso da mãe ao parto (14%), idade do bebê ao desmame (6%), sexo (5%) e peso ao nascer (3%);\n • Entre os fatores que influenciam o peso dos animais ao sobreano destacam-se: peso ao desmame (48%), peso ao nascer (13%), sexo (9%) e idade da mãe (2%).\n",
+  "fatores":"• Entre os fatores que explicam a variação do peso da mãe ao parto, os principais são a nutrição durante o período gestacional (50%) e a idade da mãe (17%);\n • Os principais fatores que influenciam as variações do peso ao nascer dos bezerros são: peso da mãe ao parto (26%), efeito do pai (11%), sexo do bezerro (5%); e, não considerando o peso da mãe ao parto, 20% referência-se a nutrição materna durante a gestação, 8% à efeito do pai, 6% à idade da mãe e 4% ao sexo do bezerro;\n • Os principais fatores que influenciam as variações do peso ao desmame do bezerro são: nutrição da mãe durante a lactação (41%), peso da mãe ao parto (14%), idade do bezerro ao desmame (6%), sexo (5%) e peso ao nascer (3%);\n • Entre os fatores que influenciam o peso dos animais ao sobreano destacam-se: peso ao desmame (48%), peso ao nascer (13%), sexo (9%) e idade da mãe (2%).\n",
   "inicio":"INICIO",
   "desenvolvimento":"Desenvolvimento",
   "coordenacao":"COORDENADORAS",
@@ -98,14 +98,19 @@
   "reservePotreiroMaternidade":"\n• Reserve um potreiro maternidade que permita um controle maior dos animais, com boa oferta de forragem, água e sombra;\n\n• Procure concentrar os partos nos primeiros 42 dias da estação;\n\n• Verifique se a mãe teve interesse e cuidados com o recém-nascido; principalmente entre as novilhas de primeira cria;\n\n• Certifique-se que o bezerro mamou o colostro;\n\n• Trate o umbigo do bezerro com soluções antissépticas;\n\n• Registre todas as ocorrências relacionadas à parição, como: tipo de parto (normal ou assistido), ocorrência de retenção de placenta, de natimortos, de deformidades, entre outros) e se possível pese o bezerro e sua mãe até 24 horas após o nascimento;\n\n• Inicie as dosificações com endoparasitários a partir dos 3 meses de vida e repita a cada 2 meses, lembre-se que estes animais necessitam desverminações estratégicas até os 2 anos de idade no mínimo.\n",
   "erroInformeValor":"ERRO!! Informe um valor maior que zero (0) e/ou utilize ponto(.) no lugar da vírgula(,).",
   "taxaGeralMortAnualRabanho":"Taxa geral de mortalidade anual de rebanho",
-  "error":"ERRO!:"
-
-
-  
-  
-  
-
-  
-  
- 
+  "error":"ERRO!:",
+  "prodBezerroFemeaTitulo": "Produção Real de kg de bezerro desmamado/fêmea/ano",
+  "prodBezerroFemeaSub": "A eficiência do rebanho de cria é avaliada pela produção real de kg de bezerro desmamado por fêmea anualmente. A meta é obter valores acima de 170 kg para todas as categorias.",
+  "prodBezerroAreaTitulo": "Produção Real de kg de bezerro desmamado por área",
+  "categoriaLabel": "Categoria",
+  "catGeral": "Cálculo geral",
+  "pesoBezerroLabel": "Informe o peso do bezerro desmamado em Kg",
+  "areaUtilizadaLabel": "Informe a área da propriedade em ha (hectares) utilizada para produção do rebanho de cria",
+  "btnCalcular": "Calcular",
+  "resultadoTitulo": "RESULTADO",
+  "resultadoPrefixo": "Seu resultado é:",
+  "catSelecionadaPrefixo": "Categoria selecionada:",
+  "verifiqueMeta170": "Verifique se o seu resultado está acima ou abaixo de 170 kg. Caso seu resultado esteja abaixo deste valor, veja:",
+  "verifiqueMeta20ha": "Verifique se o seu resultado está acima ou abaixo de 20 kg/ha. Caso seu resultado esteja abaixo deste valor, veja:",
+  "erroPreenchimento": "ERRO: Preencha todos os campos corretamente com valores maiores que zero e selecione uma categoria."
 }

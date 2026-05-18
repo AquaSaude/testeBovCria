@@ -141,7 +141,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fatores =>
-      '• Among the factors that explain the variation in the mother\'s weight at birth, the main ones are nutrition during the gestational period (50%) and the mother\'s age (17%);\n • The main factors that influence variations in birth weight of calves are: mother\'s birth weight (26%), father\'s race (11%), calf\'s sex (5%); and, not considering the mother\'s weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father\'s race, 6% to the mother\'s age and 4% to the calf\'s sex;\n • The main factors influencing changes in the baby\'s weaning weight are: mother\'s nutrition during lactation (41%), mother\'s weight at birth (14%), baby\'s age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother\'s age (2%).\n';
+      '• Among the factors that explain the variation in the mother\'s weight at birth, the main ones are nutrition during the gestational period (50%) and the mother\'s age (17%);\n • The main factors that influence variations in birth weight of calves are: mother\'s birth weight (26%), father\'s race (11%), calf\'s sex (5%); and, not considering the mother\'s weight at birth, 20% refers to maternal nutrition during pregnancy, 8% to the father\'s race, 6% to the mother\'s age and 4% to the calf\'s sex;\n • The main factors influencing changes in the calf\'s weaning weight are: mother\'s nutrition during lactation (41%), mother\'s weight at birth (14%), calf\'s age at weaning (6%), sex (5%) and birth weight (3%);\n • Among the factors influencing weight of the yearling animals, the following stand out: weaning weight (48%), birth weight (13%), sex (9%) and mother\'s age (2%).\n';
 
   @override
   String get inicio => 'START';
@@ -336,4 +336,53 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error => 'ERROR!:';
+
+  @override
+  String get prodBezerroFemeaTitulo =>
+      'Real production of kg of weaned/female calf/year';
+
+  @override
+  String get prodBezerroFemeaSub =>
+      'The efficiency of the cow-calf systems is evaluated by the actual production of kg of weaned calf per female annually.';
+
+  @override
+  String get prodBezerroAreaTitulo =>
+      'Real production of kg of calf weaned by area';
+
+  @override
+  String get categoriaLabel => 'Category';
+
+  @override
+  String get catGeral => 'General calculation';
+
+  @override
+  String get pesoBezerroLabel => 'Inform the weight of the weaned calf in Kg';
+
+  @override
+  String get areaUtilizadaLabel =>
+      'Inform the area of the property in ha (hectares) used for the production of the breeding herd';
+
+  @override
+  String get btnCalcular => 'Calculate';
+
+  @override
+  String get resultadoTitulo => 'RESULT';
+
+  @override
+  String get resultadoPrefixo => 'Your result is:';
+
+  @override
+  String get catSelecionadaPrefixo => 'Selected Category:';
+
+  @override
+  String get verifiqueMeta170 =>
+      'Check if your result is above or below 170 kg.If your result is below this value, see:';
+
+  @override
+  String get verifiqueMeta20ha =>
+      'Check if your result is above or below 20 kg/ha. If your result is below this value, see:';
+
+  @override
+  String get erroPreenchimento =>
+      'ERROR! Calf weight: Use values ​​greater than zero and select one of the categories listed above!';
 }

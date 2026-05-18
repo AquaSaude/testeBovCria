@@ -1,288 +1,132 @@
 import 'package:flutter/material.dart';
 import 'package:bovcria/l10n/app_localizations.dart';
-import 'package:bovcria/TabelasMetas.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-// A importação de 'flutter_email_sender' foi removida, pois não é mais utilizada aqui.
+
+// Import your custom layout base
+import './layouts/layout_base_card.dart';
 
 class Info2 extends StatelessWidget {
   final int index;
 
-  Info2({Key? key, required this.index}) : super(key: key);
+  const Info2({Key? key, required this.index}) : super(key: key);
 
-  Widget _informacoes(int indice, BuildContext context) {
-    if (indice == 1) {
-      var dev = [
+  Widget _buildListItem(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(icon, color: Colors.black87, size: 18),
+          const SizedBox(width: 8),
+          Expanded(child: Text(text, style: const TextStyle(fontSize: 14))),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Container(
+      width: double.infinity,
+      color: Colors.lightGreen,
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      // Adjusted margin so the top header doesn't have too much gap at the very top
+      margin: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: Text(
+        title,
+        style: const TextStyle(
+            fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  List<Widget> _buildDynamicContent(BuildContext context) {
+    if (index == 1) {
+      final coordenadora = [
+        "Dra. Adriana Kroef Tarouco (DDPA|SEAPDR)",
+        "Dra. Lissandra Souto Cavalli (DDPA|SEAPDR)"
+      ];
+      final dev = [
         "Eduarda Soares Serpa Camboim (UFCSPA)",
         "Willian de Vargas (UFCSPA)",
-        "Felipe Cardoso Martins (UFCSPA)"
+        "Felipe Cardoso Martins (UFCSPA)",
+        "Henry Barcelos Peitz (UFCSPA)"
       ];
-
-      var equipe = [
+      final equipe = [
         "Dra. Adriana Kroef Tarouco (DDPA|SEAPDR)",
         "Dra. Lissandra Souto Cavalli (DDPA|SEAPDR)",
         "Willian de Vargas (UFCSPA)",
         "Eduarda Soares Serpa Camboim (UFCSPA)",
-        "Felipe Martins (UFCSPA)"
+        "Felipe Martins (UFCSPA)",
+        "Henry Barcelos Peitz (UFCSPA)"
       ];
 
-      var coordenadora = [
-        "Dra. Adriana Kroef Tarouco (DDPA|SEAPDR)",
-        "Dra. Lissandra Souto Cavalli (DDPA|SEAPDR)"
+      return [
+        _buildSectionHeader(AppLocalizations.of(context)!.coordenacao),
+        ...coordenadora
+            .map((name) => _buildListItem(Icons.person, name))
+            .toList(),
+        _buildSectionHeader(AppLocalizations.of(context)!.desenvolvimento),
+        ...dev.map((name) => _buildListItem(Icons.person, name)).toList(),
+        _buildSectionHeader(AppLocalizations.of(context)!.time),
+        ...equipe.map((name) => _buildListItem(Icons.person, name)).toList(),
       ];
-
-      List<Row> listaCordenadora = [];
-      for (var i = 0; i < coordenadora.length; i++) {
-        listaCordenadora.add(Row(
-          children: <Widget>[
-            Icon(Icons.person),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Text(coordenadora[i]),
-              ),
-            )
-          ],
-        ));
-      }
-
-      List<Row> listaDev = [];
-      for (var i = 0; i < dev.length; i++) {
-        listaDev.add(Row(
-          children: <Widget>[
-            Icon(Icons.person),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Text(dev[i]),
-              ),
-            )
-          ],
-        ));
-      }
-
-      List<Row> listaEquipe = [];
-      for (var i = 0; i < equipe.length; i++) {
-        listaEquipe.add(Row(
-          children: <Widget>[
-            Icon(Icons.person),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Text(equipe[i]),
-              ),
-            )
-          ],
-        ));
-      }
-
-      return Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(1),
-            child: Column(
-              children: <Widget>[
-                //Coordenação
-                Container(
-                  child: Column(
-                    children: <Widget>[
-                      //Coordenadora
-                      Container(
-                        color: Colors.lightGreen,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text(
-                                  AppLocalizations.of(context)!.coordenacao,
-                                  style: Theme.of(context).textTheme.titleLarge),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Column(
-                          children: listaCordenadora,
-                        ),
-                      ),
-
-                      //Dev
-                      Container(
-                        color: Colors.lightGreen,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text(
-                                  AppLocalizations.of(context)!.desenvolvimento,
-                                  style: Theme.of(context).textTheme.titleLarge),
-                            )
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Column(
-                          children: listaDev,
-                        ),
-                      ),
-
-                      //Equipe
-                      Container(
-                        color: Colors.lightGreen,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text(AppLocalizations.of(context)!.time,
-                                  style: Theme.of(context).textTheme.titleLarge),
-                            )
-                          ],
-                        ),
-                      ),
-                      Column(
-                        children: listaEquipe,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-      );
-
-      //bibliografia
-    } else if (indice == 2) {
-      var bibliografia = [
+    } else if (index == 2) {
+      final bibliografia = [
         "Ícones: flaticon.com",
         "Fonte: Greenwood, Clayton, and Bell. doi:10.2527/af.2017-0127",
       ];
 
-      List<Row> listaBibliografia = [];
-      for (var i = 0; i < bibliografia.length; i++) {
-        listaBibliografia.add(Row(
-          children: <Widget>[
-            Icon(Icons.book),
-            Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: Text(bibliografia[i]),
-                ))
-          ],
-        ));
-      }
+      return [
+        _buildSectionHeader(AppLocalizations.of(context)!.bibliografia),
+        ...bibliografia
+            .map((item) => _buildListItem(Icons.book, item))
+            .toList(),
+      ];
+    }
 
-      return Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(5),
-            child: Column(
+    return [];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF77dd77),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('BovCria'),
+        backgroundColor: Colors.green,
+      ),
+      body: LayoutBaseCard(
+        titulo: "",
+        centralizar: false,
+        filhos: [
+          ..._buildDynamicContent(context),
+          const SizedBox(height: 24),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: const StadiumBorder(),
+              backgroundColor: Colors.lightGreen,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            ),
+            onPressed: () {
+              Navigator.pop(context, true);
+            },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  color: Colors.lightGreen,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(5),
-                        child: Text(AppLocalizations.of(context)!.bibliografia,
-                            style: Theme.of(context).textTheme.titleLarge),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 10),
-                  child: Column(
-                    children: listaBibliografia,
-                  ),
+                const Icon(Icons.arrow_back),
+                const SizedBox(width: 8),
+                Text(
+                  AppLocalizations.of(context)!.voltar,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
           ),
         ],
-      );
-    }
-    return Container();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    //Variaveis
-    var title = 'BovCria';
-
-    // Variavel 'largura' não está definida no código do usuário.
-    // Para evitar erros, vou atribuir um valor padrão.
-    var largura = MediaQuery.of(context).size.width;
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: title,
-
-      //Estrutura base de um app
-      home: Scaffold(
-        backgroundColor: Color(0xFF77dd77),
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(title),
-          backgroundColor: Colors.green,
-        ),
-        body: ListView(
-          children: <Widget>[
-            Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  children: <Widget>[
-                    Card(
-                      color: Colors.white,
-                      child: Container(
-                        padding: EdgeInsets.all(32.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            _informacoes(index, context),
-                            //Back Button
-                            Padding(
-                              padding: EdgeInsets.all(5),
-                              child: TextButton(
-                                style: ButtonStyle(
-                                  shape: WidgetStateProperty.all(StadiumBorder()),
-                                  backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
-                                  foregroundColor: WidgetStateProperty.all(Colors.white),
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context, true);
-                                },
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(Icons.arrow_back),
-                                        Text(AppLocalizations.of(context)!.voltar),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                )),
-          ],
-        ),
       ),
     );
   }

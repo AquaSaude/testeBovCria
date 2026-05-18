@@ -1,821 +1,536 @@
-import 'package:bovcria/voce_sabia.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'TabelasMetas.dart';
 import 'dicas.dart';
 
+class _Categoria {
+  final String display;
+  final String value;
+  const _Categoria({required this.display, required this.value});
+}
+
+const List<_Categoria> _categorias = [
+  _Categoria(display: 'Novilhas de 13-24 meses', value: '1'),
+  _Categoria(display: 'Novilhas de 25-36 meses', value: '2'),
+  _Categoria(display: 'Vacas > 36 meses', value: '3'),
+  _Categoria(display: 'Cálculo geral', value: '4'),
+];
+
 class Taxas_Calculos_2 extends StatefulWidget {
   final int? index;
-
   const Taxas_Calculos_2({Key? key, this.index}) : super(key: key);
 
   @override
-  _Taxas_Calculos_2State createState() => _Taxas_Calculos_2State();
+  State<Taxas_Calculos_2> createState() => _Taxas_Calculos_2State();
 }
 
 class _Taxas_Calculos_2State extends State<Taxas_Calculos_2> {
-  // Variáveis uteis
-  TextEditingController _animaisMortosController = TextEditingController();
-  TextEditingController _inicialAnimaisController = TextEditingController();
-  TextEditingController _bezerrosNascidosController = TextEditingController();
-  TextEditingController _bezerrosDesmamadosController = TextEditingController();
-  TextEditingController _femeasGestantesController = TextEditingController();
-  TextEditingController _pesoBezerroController = TextEditingController();
-  TextEditingController _pesoFemeaController = TextEditingController();
-  TextEditingController _intervaloDiasController = TextEditingController();
-  TextEditingController _areaPropriedadeController = TextEditingController();
-  String? _myActivity;
-  Card _cardResultado = Card(
-      color: Colors.white,
-      child: Container(
-        padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Text(
-                "RESULTADO",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-              Divider(
-                thickness: 0,
-              ),
-              Text("Aguardando parâmetros para cálculo.")
-            ]),
-      ));
+  // Controllers
+  final _animaisMortosCtrl = TextEditingController();
+  final _inicialAnimaisCtrl = TextEditingController();
+  final _bezerrosNascidosCtrl = TextEditingController();
+  final _bezerrosDesmamadosCtrl = TextEditingController();
+  final _femeasGestantesCtrl = TextEditingController();
 
-  // Fonte de dados para o Dropdown
-  final List<Map<String, String>> _categories = [
-    {
-      "display": "Novilhas de 13-24 meses",
-      "value": "1",
-    },
-    {
-      "display": "Novilhas de 25-36 meses",
-      "value": "2",
-    },
-    {
-      "display": "Vacas > 36 meses",
-      "value": "3",
-    },
-    {
-      "display": "Cálculo geral",
-      "value": "4",
-    },
-  ];
+  String? _categoriaSelecionada;
+  Widget? _cardResultado;
 
-  // Função auxiliar para parsear e formatar a entrada de texto
-  String _parseInput(String text) {
-    return text.contains(",") ? text.replaceAll(",", ".") : text;
+  @override
+  void dispose() {
+    _animaisMortosCtrl.dispose();
+    _inicialAnimaisCtrl.dispose();
+    _bezerrosNascidosCtrl.dispose();
+    _bezerrosDesmamadosCtrl.dispose();
+    _femeasGestantesCtrl.dispose();
+    super.dispose();
   }
 
-  // Métodos de cálculo para cada índice
-  void _calcularTaxa1() {
-    String animaisMortosFormatado = _parseInput(_animaisMortosController.text);
-    String inicialAnimaisFormatado = _parseInput(_inicialAnimaisController.text);
+  static double? _parse(String raw) =>
+      double.tryParse(raw.replaceAll(',', '.'));
 
-    int? animaisMortos = int.tryParse(animaisMortosFormatado);
-    int? inicialAnimais = int.tryParse(inicialAnimaisFormatado);
-
-    if (animaisMortos == null ||
-        inicialAnimais == null ||
-        animaisMortos < 0 ||
-        inicialAnimais <= 0 ||
-        _myActivity == null) {
-      String mensagem = "ERRO!\n";
-      if (animaisMortos == null || animaisMortos < 0) {
-        mensagem +=
-        "\n• Número de animais mortos: Utilize valores maiores ou iguais a zero e números inteiros.";
-      }
-      if (inicialAnimais == null || inicialAnimais <= 0) {
-        mensagem +=
-        "\n• Número inicial de animais no rebanho: Utilize valores maiores que 0 e números inteiros.";
-      }
-      if (_myActivity == null) {
-        mensagem += "\n• Categoria: Selecione uma das categorias listadas acima!";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      mensagem,
-                      style: TextStyle(
-                          color: Colors.red.withOpacity(0.8),
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-            ));
-      });
-    } else {
-      // Fórmula: N° de animais mortos x 100/número inicial de animais
-      double resultado = (animaisMortos * 100) / inicialAnimais;
-      String cat = "";
-
-      if (_myActivity == "1") {
-        cat = "Novilhas de 13-24 meses";
-      } else if (_myActivity == "2") {
-        cat = "Novilhas de 25-36 meses";
-      } else if (_myActivity == "3") {
-        cat = "Vacas > 36 meses";
-      } else {
-        cat = "Cálculo geral";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Resultado",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "• O seu resultado é: " +
-                          resultado.toStringAsPrecision(4) +
-                          "%\n",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Categoria selecionada: " + cat + "\n",
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Verifique se o seu resultado está acima ou abaixo da taxa ideal na TABELA 2 - Índices gerais do rebanho de cria.\n"
-                          "• Veja dicas de manejo para melhorar o desempenho.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TabelasMetas(index: 2)));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.tableLarge),
-                              Flexible(
-                                child: Text(
-                                  "Índices gerais do rebanho de cria",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Dicas()));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.lightbulbOnOutline),
-                              Flexible(
-                                child: Text(
-                                  "Dicas de manejo",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ]),
-            ));
-      });
+  String get _nomeCategoria {
+    switch (_categoriaSelecionada) {
+      case '1':
+        return 'Novilhas de 13-24 meses';
+      case '2':
+        return 'Novilhas de 25-36 meses';
+      case '3':
+        return 'Vacas > 36 meses';
+      default:
+        return 'Cálculo geral';
     }
+  }
+
+  void _calcularTaxa1() {
+    FocusScope.of(context).unfocus();
+    final mortos = _parse(_animaisMortosCtrl.text);
+    final inicial = _parse(_inicialAnimaisCtrl.text);
+
+    final erros = <String>[];
+    if (mortos == null || mortos < 0) {
+      erros.add('Animais mortos: use valores ≥ 0.');
+    }
+    if (inicial == null || inicial <= 0) {
+      erros.add('Animais iniciais: use valores > 0.');
+    }
+    if (_categoriaSelecionada == null) {
+      erros.add('Selecione uma categoria.');
+    }
+
+    if (erros.isNotEmpty) {
+      _setErro(erros);
+      return;
+    }
+
+    final resultado = (mortos! * 100) / inicial!;
+    _setSucesso(
+      resultado: '${resultado.toStringAsPrecision(4)}%',
+      categoria: _nomeCategoria,
+      observacao:
+          'Verifique se o seu resultado está acima ou abaixo da taxa ideal na '
+          'TABELA 2 – Índices gerais do rebanho de cria.\n'
+          'Veja dicas de manejo para melhorar o desempenho.',
+      tabelaIndex: 2,
+    );
   }
 
   void _calcularTaxa2() {
-    String bezerrosNascidosFormatado =
-    _parseInput(_bezerrosNascidosController.text);
-    String bezerrosDesmamadosFormatado =
-    _parseInput(_bezerrosDesmamadosController.text);
+    FocusScope.of(context).unfocus();
+    final nascidos = _parse(_bezerrosNascidosCtrl.text);
+    final desmamados = _parse(_bezerrosDesmamadosCtrl.text);
 
-    int? bezerrosNascidos = int.tryParse(bezerrosNascidosFormatado);
-    int? bezerrosDesmamados = int.tryParse(bezerrosDesmamadosFormatado);
-
-    if (bezerrosDesmamados == null ||
-        bezerrosNascidos == null ||
-        bezerrosDesmamados < 0 ||
-        bezerrosNascidos <= 0 ||
-        _myActivity == null) {
-      String mensagem = "ERRO!\n";
-      if (bezerrosDesmamados == null || bezerrosDesmamados < 0) {
-        mensagem +=
-        "\n• Número de bezerros desmamados: Utilize valores maiores ou iguais a zero e números inteiros.";
-      }
-      if (bezerrosNascidos == null || bezerrosNascidos <= 0) {
-        mensagem +=
-        "\n• Número de bezerros nascidos: Utilize valores maiores que 0 e números inteiros.";
-      }
-      if (_myActivity == null) {
-        mensagem += "\n• Categoria: Selecione uma das categorias listadas acima!";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      mensagem,
-                      style: TextStyle(
-                          color: Colors.red.withOpacity(0.8),
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-            ));
-      });
-    } else {
-      // Fórmula: N° de BEZERROS NASCIDOS - N° DE BEZERROS DESMAMADOS x 100/ N° DE BEZERROS NASCIDOS
-      double resultado =
-          ((bezerrosNascidos - bezerrosDesmamados) * 100) / bezerrosNascidos;
-      String cat = "";
-
-      if (_myActivity == "1") {
-        cat = "Novilhas de 13-24 meses";
-      } else if (_myActivity == "2") {
-        cat = "Novilhas de 25-36 meses";
-      } else if (_myActivity == "3") {
-        cat = "Vacas > 36 meses";
-      } else {
-        cat = "Cálculo geral";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Resultado",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "• O seu resultado é: " +
-                          resultado.toStringAsPrecision(4) +
-                          "%\n",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Categoria selecionada: " + cat + "\n",
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Verifique se o seu resultado está acima ou abaixo da taxa ideal na TABELA 2 - Índices gerais do rebanho de cria.\n"
-                          "• Veja dicas de manejo para melhorar o desempenho.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TabelasMetas(index: 2)));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.tableLarge),
-                              Flexible(
-                                child: Text(
-                                  "Índices gerais do rebanho de cria",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Dicas()));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.lightbulbOnOutline),
-                              Flexible(
-                                child: Text(
-                                  "Dicas de manejo",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ]),
-            ));
-      });
+    final erros = <String>[];
+    if (nascidos == null || nascidos <= 0) {
+      erros.add('Bezerros nascidos: use valores > 0.');
     }
+    if (desmamados == null || desmamados < 0) {
+      erros.add('Bezerros desmamados: use valores ≥ 0.');
+    }
+    if (_categoriaSelecionada == null) {
+      erros.add('Selecione uma categoria.');
+    }
+
+    if (erros.isNotEmpty) {
+      _setErro(erros);
+      return;
+    }
+
+    final resultado = ((nascidos! - desmamados!) * 100) / nascidos;
+    _setSucesso(
+      resultado: '${resultado.toStringAsPrecision(4)}%',
+      categoria: _nomeCategoria,
+      observacao:
+          'Verifique se o seu resultado está acima ou abaixo da taxa ideal na '
+          'TABELA 2 – Índices gerais do rebanho de cria.\n'
+          'Veja dicas de manejo para melhorar o desempenho.',
+      tabelaIndex: 2,
+    );
   }
 
   void _calcularTaxa3() {
-    String femeasGestantesFormatado =
-    _parseInput(_femeasGestantesController.text);
-    String bezerrosDesmamadosFormatado =
-    _parseInput(_bezerrosDesmamadosController.text);
+    FocusScope.of(context).unfocus();
+    final gestantes = _parse(_femeasGestantesCtrl.text);
+    final desmamados = _parse(_bezerrosDesmamadosCtrl.text);
 
-    int? femeasGestantes = int.tryParse(femeasGestantesFormatado);
-    int? bezerrosDesmamados = int.tryParse(bezerrosDesmamadosFormatado);
-
-    if (bezerrosDesmamados == null ||
-        femeasGestantes == null ||
-        bezerrosDesmamados < 0 ||
-        femeasGestantes <= 0 ||
-        _myActivity == null) {
-      String mensagem = "ERRO!\n";
-      if (bezerrosDesmamados == null || bezerrosDesmamados < 0) {
-        mensagem +=
-        "\n• Número de bezerros desmamados: Utilize valores maiores ou iguais a zero e números inteiros.";
-      }
-      if (femeasGestantes == null || femeasGestantes <= 0) {
-        mensagem +=
-        "\n• Número de fêmeas gestantes: Utilize valores maiores que 0 e números inteiros.";
-      }
-      if (_myActivity == null) {
-        mensagem += "\n• Categoria: Selecione uma das categorias listadas acima!";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      mensagem,
-                      style: TextStyle(
-                          color: Colors.red.withOpacity(0.8),
-                          fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-            ));
-      });
-    } else {
-      // Fórmula: Nº de bezerros desmamados x 100/ Nº de fêmeas gestantes
-      double resultado = (bezerrosDesmamados * 100) / femeasGestantes;
-      String cat = "";
-
-      if (_myActivity == "1") {
-        cat = "Novilhas de 13-24 meses";
-      } else if (_myActivity == "2") {
-        cat = "Novilhas de 25-36 meses";
-      } else if (_myActivity == "3") {
-        cat = "Vacas > 36 meses";
-      } else {
-        cat = "Cálculo geral";
-      }
-
-      setState(() {
-        _cardResultado = Card(
-            color: Colors.white,
-            child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "Resultado",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "• O seu resultado é: " +
-                          resultado.toStringAsPrecision(4) +
-                          "%\n",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Categoria selecionada: " + cat + "\n",
-                      textAlign: TextAlign.left,
-                    ),
-                    Text(
-                      "• Verifique se o seu resultado está acima ou abaixo da taxa ideal na TABELA 1 - Metas para os índices reprodutivos conforme categoria animal.\n"
-                          "• Veja orientações em dicas de manejo e “você sabia que…”, para melhorar o desempenho.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => TabelasMetas(index: 1)));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.tableLarge),
-                              Flexible(
-                                child: Text(
-                                  "Metas para os índices reprodutivos conforme categoria animal",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightGreen,
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Dicas()));
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(MdiIcons.lightbulbOnOutline),
-                              Flexible(
-                                child: Text(
-                                  "Dicas de manejo",
-                                  textAlign: TextAlign.center,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ]),
-            ));
-      });
+    final erros = <String>[];
+    if (gestantes == null || gestantes <= 0) {
+      erros.add('Fêmeas gestantes: use valores > 0.');
     }
+    if (desmamados == null || desmamados < 0) {
+      erros.add('Bezerros desmamados: use valores ≥ 0.');
+    }
+    if (_categoriaSelecionada == null) {
+      erros.add('Selecione uma categoria.');
+    }
+
+    if (erros.isNotEmpty) {
+      _setErro(erros);
+      return;
+    }
+
+    final resultado = (desmamados! * 100) / gestantes!;
+    _setSucesso(
+      resultado: '${resultado.toStringAsPrecision(4)}%',
+      categoria: _nomeCategoria,
+      observacao:
+          'Verifique se o seu resultado está acima ou abaixo da taxa ideal na '
+          'TABELA 1 – Metas para os índices reprodutivos conforme categoria animal.\n'
+          'Veja orientações em dicas de manejo para melhorar o desempenho.',
+      tabelaIndex: 1,
+    );
   }
 
-  Card taxas(int? index, BuildContext context) {
-    if (index == 1) {
-      return Card(
-          color: Colors.white,
-          child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      "TAXA GERAL DE MORTALIDADE ANUAL DE REBANHO",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "Esta taxa permite avaliar se os manejos nutricional e sanitário em todas as categorias do rebanho e o gerenciamento geral da propriedade estão sendo eficientes. A morte de qualquer animal implica em perda econômica.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "\nEsta taxa também poder ser calculada por categoria, assim possibilita avaliar qual destas necessitam uma maior atenção, portanto o produtor poderá escolher a categoria para comparar o resultado obtido na fazenda com a meta da TABELA 2 - Índices gerais do rebanho de cria.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "\nSelecione uma das categorias abaixo:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        labelText: 'Categoria',
-                        hintText: 'Selecione uma das categorias',
-                      ),
-                      initialValue: _myActivity,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _myActivity = newValue;
-                        });
-                      },
-                      items: _categories.map((Map<String, String> category) {
-                        return DropdownMenuItem<String>(
-                          value: category['value'],
-                          child: Text(category['display']!),
-                        );
-                      }).toList(),
-                    ),
-                    Text(
-                      "\nInforme o número de animais mortos:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número de animais mortos:"),
-                      controller: _animaisMortosController,
-                    ),
-                    Text(
-                      "\nInforme o número inicial de animais no rebanho:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número inicial de animais no rebanho:"),
-                      controller: _inicialAnimaisController,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: StadiumBorder(),
-                        backgroundColor: Colors.green,
-                      ),
-                      child: Container(
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(Icons.send),
-                            Text(" Enviar",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18)),
-                          ],
-                        ),
-                      ),
-                      onPressed: () {
-                        FocusScope.of(context).unfocus();
-                        _calcularTaxa1();
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: _cardResultado,
-                    )
-                  ])));
-    } else if (index == 2) {
-      return Card(
-          color: Colors.white,
-          child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      "TAXA ANUAL DE MORTALIDADE DE BEZERROS ATÉ DESMAMA",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "Esta taxa permite avaliar a habilidade materna das fêmeas e todas as estratégias de manejo do rebanho de cria. A perda de um terneiro reflete negativamente no empenho em fazer uma fêmea conceber e gera perdas econômicas.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "\nSelecione uma das categorias abaixo:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        labelText: 'Categoria',
-                        hintText: 'Selecione uma das categorias',
-                      ),
-                      initialValue: _myActivity,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _myActivity = newValue;
-                        });
-                      },
-                      items: _categories.map((Map<String, String> category) {
-                        return DropdownMenuItem<String>(
-                          value: category['value'],
-                          child: Text(category['display']!),
-                        );
-                      }).toList(),
-                    ),
-                    Text(
-                      "\nInforme o número de bezerros nascidos:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número de bezerros nascidos:"),
-                      controller: _bezerrosNascidosController,
-                    ),
-                    Text(
-                      "\nInforme o número de bezerros desmamados:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número de bezerros desmamados:"),
-                      controller: _bezerrosDesmamadosController,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: StadiumBorder(),
-                        backgroundColor: Colors.green,
-                      ),
-                      child: Container(
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(Icons.send),
-                            Text(" Enviar",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18)),
-                          ],
-                        ),
-                      ),
-                      onPressed: () {
-                        FocusScope.of(context).unfocus();
-                        _calcularTaxa2();
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: _cardResultado,
-                    )
-                  ])));
-    } else if (index == 3) {
-      return Card(
-          color: Colors.white,
-          child: Container(
-              padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      "TAXA DE DESMAME",
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                    Divider(
-                      thickness: 0,
-                    ),
-                    Text(
-                      "Este é o principal índice para avaliar o desempenho reprodutivo de um rebanho de cria. Um bom desempenho reprodutivo é o resultado de uma interação positiva entre fatores como genética, ambiente e manejo.",
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "\nSelecione uma das categorias abaixo:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    DropdownButtonFormField<String>(
-                      decoration: InputDecoration(
-                        labelText: 'Categoria',
-                        hintText: 'Selecione uma das categorias',
-                      ),
-                      initialValue: _myActivity,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _myActivity = newValue;
-                        });
-                      },
-                      items: _categories.map((Map<String, String> category) {
-                        return DropdownMenuItem<String>(
-                          value: category['value'],
-                          child: Text(category['display']!),
-                        );
-                      }).toList(),
-                    ),
-                    Text(
-                      "\nInforme o número de fêmeas gestantes:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número de fêmeas gestantes:"),
-                      controller: _femeasGestantesController,
-                    ),
-                    Text(
-                      "\nInforme o número de bezerros desmamados:",
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    TextField(
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          labelText: "Número de bezerros desmamados:"),
-                      controller: _bezerrosDesmamadosController,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: StadiumBorder(),
-                        backgroundColor: Colors.green,
-                      ),
-                      child: Container(
-                        width: 100,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(Icons.send),
-                            Text(" Enviar",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18)),
-                          ],
-                        ),
-                      ),
-                      onPressed: () {
-                        FocusScope.of(context).unfocus();
-                        _calcularTaxa3();
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: _cardResultado,
-                    )
-                  ])));
-    } else {
-      return Card(
-        color: Colors.white,
-        child: Container(
-          padding: EdgeInsets.fromLTRB(15, 20, 15, 20),
-          child: Text("Cálculo para este índice não implementado."),
-        ),
+  void _setErro(List<String> erros) {
+    setState(() {
+      _cardResultado = _ErroCard(mensagens: erros);
+    });
+  }
+
+  void _setSucesso({
+    required String resultado,
+    required String categoria,
+    required String observacao,
+    required int tabelaIndex,
+  }) {
+    setState(() {
+      _cardResultado = _SucessoCard(
+        resultado: resultado,
+        categoria: categoria,
+        observacao: observacao,
+        tabelaIndex: tabelaIndex,
       );
+    });
+  }
+
+  Widget _dropdownCategoria() {
+    return DropdownButtonFormField<String>(
+      decoration: const InputDecoration(
+        labelText: 'Categoria',
+        hintText: 'Selecione uma das categorias',
+        border: OutlineInputBorder(),
+      ),
+      initialValue: _categoriaSelecionada,
+      onChanged: (v) => setState(() => _categoriaSelecionada = v),
+      items: _categorias
+          .map((c) => DropdownMenuItem(value: c.value, child: Text(c.display)))
+          .toList(),
+    );
+  }
+
+  Widget _campoNumerico({
+    required String label,
+    required TextEditingController controller,
+  }) {
+    return TextField(
+      controller: controller,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        labelText: label,
+        border: const OutlineInputBorder(),
+      ),
+    );
+  }
+
+  Widget _botaoEnviar(VoidCallback onPressed) {
+    return Center(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: const StadiumBorder(),
+          backgroundColor: Colors.green,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        ),
+        onPressed: onPressed,
+        child: SizedBox(
+          width: 100,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.send),
+              SizedBox(width: 8),
+              Text('Enviar',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _botaoVoltar() {
+    return Center(
+      child: TextButton(
+        style: ButtonStyle(
+          shape: WidgetStateProperty.all(const StadiumBorder()),
+          backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
+          foregroundColor: WidgetStateProperty.all(Colors.white),
+          padding: WidgetStateProperty.all(
+              const EdgeInsets.symmetric(vertical: 12, horizontal: 16)),
+        ),
+        onPressed: () => Navigator.pop(context),
+        child: SizedBox(
+          width: 100,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.arrow_back),
+              SizedBox(width: 8),
+              Text('Voltar',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _conteudo() {
+    switch (widget.index) {
+      case 1:
+        return _FormCard(
+          titulo: 'TAXA GERAL DE MORTALIDADE ANUAL DE REBANHO',
+          descricao:
+              'Esta taxa permite avaliar se os manejos nutricional e sanitário em '
+              'todas as categorias do rebanho e o gerenciamento geral da propriedade '
+              'estão sendo eficientes. A morte de qualquer animal implica em perda econômica.\n\n'
+              'Esta taxa também pode ser calculada por categoria, possibilitando avaliar '
+              'quais necessitam maior atenção.',
+          campos: [
+            _dropdownCategoria(),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número de animais mortos',
+                controller: _animaisMortosCtrl),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número inicial de animais no rebanho',
+                controller: _inicialAnimaisCtrl),
+          ],
+          onEnviar: _calcularTaxa1,
+          cardResultado: _cardResultado,
+          botaoVoltar: _botaoVoltar(),
+          botaoEnviar: _botaoEnviar(_calcularTaxa1),
+        );
+
+      case 2:
+        return _FormCard(
+          titulo: 'TAXA ANUAL DE MORTALIDADE DE BEZERROS ATÉ DESMAMA',
+          descricao:
+              'Esta taxa permite avaliar a habilidade materna das fêmeas e todas as '
+              'estratégias de manejo do rebanho de cria. A perda de um terneiro reflete '
+              'negativamente no empenho de fazer uma fêmea conceber e gera perdas econômicas.',
+          campos: [
+            _dropdownCategoria(),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número de bezerros nascidos',
+                controller: _bezerrosNascidosCtrl),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número de bezerros desmamados',
+                controller: _bezerrosDesmamadosCtrl),
+          ],
+          onEnviar: _calcularTaxa2,
+          cardResultado: _cardResultado,
+          botaoVoltar: _botaoVoltar(),
+          botaoEnviar: _botaoEnviar(_calcularTaxa2),
+        );
+
+      case 4:
+        return _FormCard(
+          titulo: 'TAXA DE DESMAME',
+          descricao:
+              'Este é o principal índice para avaliar o desempenho reprodutivo de um '
+              'rebanho de cria. Um bom desempenho reprodutivo é o resultado de uma '
+              'interação positiva entre fatores como genética, ambiente e manejo.',
+          campos: [
+            _dropdownCategoria(),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número de fêmeas gestantes',
+                controller: _femeasGestantesCtrl),
+            const SizedBox(height: 16),
+            _campoNumerico(
+                label: 'Número de bezerros desmamados',
+                controller: _bezerrosDesmamadosCtrl),
+          ],
+          onEnviar: _calcularTaxa3,
+          cardResultado: _cardResultado,
+          botaoVoltar: _botaoVoltar(),
+          botaoEnviar: _botaoEnviar(_calcularTaxa3),
+        );
+
+      default:
+        return const Card(
+          color: Colors.white,
+          child: Padding(
+            padding: EdgeInsets.all(24),
+            child: Text('Cálculo para este índice não implementado.'),
+          ),
+        );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF77dd77),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('BovCria'),
+        backgroundColor: Colors.green,
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: ConstrainedBox(
+              constraints:
+                  BoxConstraints(minHeight: constraints.maxHeight - 32),
+              child: _conteudo(),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _FormCard extends StatelessWidget {
+  final String titulo;
+  final String descricao;
+  final List<Widget> campos;
+  final VoidCallback onEnviar;
+  final Widget? cardResultado;
+  final Widget botaoEnviar;
+  final Widget botaoVoltar;
+
+  const _FormCard({
+    required this.titulo,
+    required this.descricao,
+    required this.campos,
+    required this.onEnviar,
+    required this.cardResultado,
+    required this.botaoEnviar,
+    required this.botaoVoltar,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              titulo,
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
+            const Divider(),
+            Text(descricao, textAlign: TextAlign.justify),
+            const Divider(),
+            const SizedBox(height: 8),
+            ...campos,
+            const SizedBox(height: 24),
+            botaoEnviar,
+            if (cardResultado != null) ...[
+              const SizedBox(height: 16),
+              cardResultado!,
+            ],
+            const SizedBox(height: 24),
+            botaoVoltar,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ErroCard extends StatelessWidget {
+  final List<String> mensagens;
+  const _ErroCard({required this.mensagens});
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
-      child: taxas(widget.index, context),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.red.shade50,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.red.shade200),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('ERRO',
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          ...mensagens.map(
+            (m) => Text('• $m', style: const TextStyle(color: Colors.red)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SucessoCard extends StatelessWidget {
+  final String resultado;
+  final String categoria;
+  final String observacao;
+  final int tabelaIndex;
+
+  const _SucessoCard({
+    required this.resultado,
+    required this.categoria,
+    required this.observacao,
+    required this.tabelaIndex,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.grey.shade200),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('RESULTADO', style: Theme.of(context).textTheme.titleLarge),
+          const Divider(),
+          Text(
+            '• Seu resultado: $resultado',
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          const SizedBox(height: 8),
+          Text('• Categoria: $categoria'),
+          const SizedBox(height: 8),
+          Text(observacao, textAlign: TextAlign.justify),
+          const SizedBox(height: 16),
+          Center(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                backgroundColor: Colors.lightGreen,
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              ),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => TabelasMetas(index: tabelaIndex)),
+              ),
+              icon: const Icon(MdiIcons.tableLarge),
+              label: const Text('Ver tabela de referência'),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Center(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                backgroundColor: Colors.lightGreen,
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              ),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => Dicas()),
+              ),
+              icon: const Icon(MdiIcons.lightbulbOnOutline),
+              label: const Text('Dicas de manejo'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

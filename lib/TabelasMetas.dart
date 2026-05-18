@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 import 'package:bovcria/l10n/app_localizations.dart';
 
 class TabelasMetas extends StatelessWidget {
@@ -32,7 +31,8 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)!.categoriataxas,
+                                    AppLocalizations.of(context)!
+                                        .categoriataxas,
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
@@ -615,7 +615,7 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    "5%%",
+                                    "5%",
                                     textAlign: TextAlign.center,
                                   ),
                                 )
@@ -716,7 +716,8 @@ class TabelasMetas extends StatelessWidget {
                                   )),
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context)!.alvoIndustrial,
+                                    AppLocalizations.of(context)!
+                                        .alvoIndustrial,
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
@@ -755,7 +756,8 @@ class TabelasMetas extends StatelessWidget {
                                   )),
                                   Flexible(
                                       child: Text(
-                                    AppLocalizations.of(context)!.alvoIndustrial,
+                                    AppLocalizations.of(context)!
+                                        .alvoIndustrial,
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
@@ -1394,7 +1396,8 @@ class TabelasMetas extends StatelessWidget {
                               children: <Widget>[
                                 Flexible(
                                   child: Text(
-                                    AppLocalizations.of(context)!.duracaoEstacao,
+                                    AppLocalizations.of(context)!
+                                        .duracaoEstacao,
                                     style:
                                         Theme.of(context).textTheme.titleMedium,
                                     textAlign: TextAlign.center,
@@ -1532,7 +1535,7 @@ class TabelasMetas extends StatelessWidget {
               padding: EdgeInsets.all(5),
               child: Center(
                 child: Column(
-                  children:[
+                  children: [
                     Card(
                       color: Colors.white,
                       child: Container(
@@ -1547,8 +1550,10 @@ class TabelasMetas extends StatelessWidget {
                             tabela(this.index, context)!,
                             TextButton(
                               style: ButtonStyle(
-                                backgroundColor: WidgetStateProperty.all(Colors.lightGreen),
-                                foregroundColor: WidgetStateProperty.all(Colors.white),
+                                backgroundColor:
+                                    WidgetStateProperty.all(Colors.lightGreen),
+                                foregroundColor:
+                                    WidgetStateProperty.all(Colors.white),
                               ),
                               onPressed: () {
                                 Navigator.pop(context, true);
@@ -1559,13 +1564,13 @@ class TabelasMetas extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(Icons.arrow_back),
-                                      Text(AppLocalizations.of(context)!.voltar),
+                                      Text(
+                                          AppLocalizations.of(context)!.voltar),
                                     ],
                                   )
                                 ],
                               ),
                             )
-
                           ],
                         ),
                       ),
